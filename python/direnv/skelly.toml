@@ -1,0 +1,8 @@
+[[inputs]]
+name = "debugger"
+options = ["ipdb", "pdb"]
+default = "ipdb"
+
+[[inputs]]
+name = "venv_path"
+default = ".venv"
