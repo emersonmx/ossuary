@@ -1,0 +1,9 @@
+bandit
+coverage
+ipdb
+mypy
+pre-commit
+pre-commit-hooks
+pytest
+ruff
+vulture
