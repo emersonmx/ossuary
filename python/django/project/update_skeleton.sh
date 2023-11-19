@@ -42,9 +42,8 @@ do
 done
 
 rm -rf "$script_dir/skeleton"
-mkdir -p "$script_dir/skeleton"
 mv "$template_dir/project_name" "$template_dir/{{ skelly.project_name }}"
-mv "$template_dir" "$script_dir/skeleton/{{ skelly.project_name }}"
+mv "$template_dir" "$script_dir/skeleton"
 
 rm -rf "$tmp_dir"
 
