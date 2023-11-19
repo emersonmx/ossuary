@@ -14,6 +14,14 @@ template_dir="$tmp_dir/django/conf/app_template"
 files=$(find "$template_dir" -type f -iname "*-tpl")
 for f in $files
 do
+    # File changes
+    if [[ $f == *"apps.py-tpl" ]]; then
+        sed -r \
+            -e "s/^(.* = )'(.*)'$/\1\"\2\"/" \
+            -i "$f"
+    fi
+
+    # Add skelly prefix
     sed -r \
         -e 's/\{\{ (.*) \}\}/{{ skelly.\1 }}/g' \
         -e 's/\{\{ skelly.camel_case_app_name \}\}/'"$camel_case_app_name"'/g' \
