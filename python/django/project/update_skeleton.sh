@@ -27,10 +27,14 @@ do
         -i "$f"
     fi
 
-    # Add skelly prefix and remove unused variables
+    # Remove unused variables
     sed -r \
         -e 's/\{\{ docs_version \}\}/'"${django_version}"'/g' \
         -e 's/\{\{ django_version \}\}/'"${django_version}"'/g' \
+        -i "$f"
+
+    # Add skelly prefix
+    sed -r \
         -e 's/\{\{ (.*) \}\}/{{ skelly.\1 }}/g' \
         -i "$f"
 
