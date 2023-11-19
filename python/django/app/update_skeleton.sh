@@ -1,17 +1,15 @@
 #!/bin/bash
 
-if [[ $# != 1 ]]; then
-    echo "Usage: $0 <version>"
-    exit 1
-fi
+set -euf -o pipefail
 
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
+django_version="4.2"
 tmp_dir=$(mktemp -d)
-version="$1"
+
 camel_case_app_name='{{ skelly.app_name | replace(from="_", to=" ") | title | split(pat=" ") | join }}'
 
-git clone --depth 1 --branch "stable/${version}.x" https://github.com/django/django "$tmp_dir"
+git clone --depth 1 --branch "stable/${django_version}.x" https://github.com/django/django "$tmp_dir"
 template_dir="$tmp_dir/django/conf/app_template"
 files=$(find "$template_dir" -type f -iname "*-tpl")
 for f in $files
