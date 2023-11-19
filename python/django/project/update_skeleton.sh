@@ -1,23 +1,39 @@
 #!/bin/bash
 
-if [[ $# != 1 ]]; then
-    echo "Usage: $0 <version>"
-    exit 1
-fi
+set -euf -o pipefail
 
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
+python_version="py311"
+django_version="4.2"
 tmp_dir=$(mktemp -d)
-version="$1"
 
-git clone --depth 1 --branch "stable/${version}.x" https://github.com/django/django "$tmp_dir"
+# replace strings
+secret_key_replace='os.environ["SECRET_KEY"]'
+allowed_hosts_replace='ALLOWED_HOSTS = list(filter(bool, os.environ.get("ALLOWED_HOSTS", "").split(",")))'
+
+git clone --depth 1 --branch "stable/${django_version}.x" https://github.com/django/django "$tmp_dir"
 template_dir="$tmp_dir/django/conf/project_template"
 files=$(find "$template_dir" -type f -iname "*-tpl")
 for f in $files
 do
+    # File changes
+    if [[ $f == *"settings.py-tpl" ]]; then
     sed -r \
-        -e 's/\{\{ docs_version \}\}/'"${version}"'/g' \
-        -e 's/\{\{ (.*) \}\}/{{ skelly.\1 }}/g' -i "$f"
+        -e '/^from pathlib import Path$/iimport os' \
+        -e "s/'\{\{ secret_key \}\}'/""${secret_key_replace}"'/' \
+        -e 's/^DEBUG = True$/DEBUG = os.environ.get("DEBUG", False)/' \
+        -e 's/^ALLOWED_HOSTS = \[\]$/'"${allowed_hosts_replace}"'/' \
+        -i "$f"
+    fi
+
+    # Add skelly prefix and remove unused variables
+    sed -r \
+        -e 's/\{\{ docs_version \}\}/'"${django_version}"'/g' \
+        -e 's/\{\{ django_version \}\}/'"${django_version}"'/g' \
+        -e 's/\{\{ (.*) \}\}/{{ skelly.\1 }}/g' \
+        -i "$f"
+
     mv "$f" "${f%'-tpl'}"
 done
 
@@ -27,3 +43,18 @@ mv "$template_dir/project_name" "$template_dir/{{ skelly.project_name }}"
 mv "$template_dir" "$script_dir/skeleton/{{ skelly.project_name }}"
 
 rm -rf "$tmp_dir"
+
+ruff format \
+    --target-version ${python_version} \
+    --line-length 80 \
+    skeleton/
+ruff check \
+    --fix \
+    --target-version ${python_version} \
+    --select UP,I,COM,E,W \
+    --ignore E501 \
+    skeleton/
+ruff format \
+    --target-version ${python_version} \
+    --line-length 80 \
+    skeleton/
