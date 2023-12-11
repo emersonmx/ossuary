@@ -4,7 +4,7 @@ set -euf -o pipefail
 
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
-django_version="4.2"
+django_version="5.0"
 tmp_dir=$(mktemp -d)
 
 camel_case_app_name='{{ skelly.app_name | replace(from="_", to=" ") | title | split(pat=" ") | join }}'

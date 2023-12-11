@@ -5,7 +5,7 @@ set -euf -o pipefail
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
 python_version="py311"
-django_version="4.2"
+django_version="5.0"
 tmp_dir=$(mktemp -d)
 
 # replace strings
