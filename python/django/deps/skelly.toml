@@ -1,3 +1,1 @@
-[[inputs]]
-name = "filename"
-default = "deps"
+inputs = []

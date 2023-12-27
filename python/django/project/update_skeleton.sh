@@ -33,16 +33,11 @@ do
         -e 's/\{\{ django_version \}\}/'"${django_version}"'/g' \
         -i "$f"
 
-    # Add skelly prefix
-    sed -r \
-        -e 's/\{\{ (.*) \}\}/{{ skelly.\1 }}/g' \
-        -i "$f"
-
     mv "$f" "${f%'-tpl'}"
 done
 
 rm -rf "$script_dir/skeleton"
-mv "$template_dir/project_name" "$template_dir/{{ skelly.project_name }}"
+mv "$template_dir/project_name" "$template_dir/{{ project_name }}"
 mv "$template_dir" "$script_dir/skeleton"
 
 rm -rf "$tmp_dir"
