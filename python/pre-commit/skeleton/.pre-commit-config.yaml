@@ -1,0 +1,84 @@
+repos:
+  - repo: local
+    hooks:
+      - id: ruff-format (isort)
+        name: ruff-format
+        entry: ruff check --select I --fix .
+        language: python
+        types_or: [python, pyi]
+        args: []
+        require_serial: true
+
+      - id: ruff-format
+        name: ruff-format
+        entry: ruff format --force-exclude
+        language: python
+        types_or: [python, pyi]
+        args: []
+        require_serial: true
+
+      - id: ruff fix
+        name: ruff
+        entry: ruff check . --fix --force-exclude
+        language: python
+        types_or: [python, pyi]
+        args: []
+        require_serial: true
+
+      - id: ruff
+        name: ruff
+        entry: ruff check --force-exclude
+        language: python
+        types_or: [python, pyi]
+        args: []
+        require_serial: true
+
+      - id: check-ast
+        name: check python ast
+        entry: check-ast
+        language: python
+        types: [python]
+
+      - id: debug-statements
+        name: debug statements (python)
+        entry: debug-statement-hook
+        language: python
+        types: [python]
+
+      - id: name-tests-test
+        name: python tests naming
+        entry: name-tests-test
+        language: python
+        files: (^|/)tests/.+\.py$
+
+      - id: check-merge-conflict
+        name: check for merge conflicts
+        entry: check-merge-conflict
+        language: python
+        types: [text]
+
+      - id: check-added-large-files
+        name: check for added large files
+        entry: check-added-large-files
+        language: python
+        stages: [commit, push, manual]
+
+      - id: detect-private-key
+        name: detect private key
+        entry: detect-private-key
+        language: python
+        types: [text]
+
+      - id: mypy
+        name: mypy
+        entry: mypy
+        language: python
+        types_or: [python, pyi]
+        require_serial: true
+
+      - id: vulture
+        name: vulture
+        language: python
+        entry: vulture
+        types: [python]
+        require_serial: true

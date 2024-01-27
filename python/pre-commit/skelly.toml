@@ -1,0 +1,3 @@
+[[inputs]]
+name = "bandit_exclude"
+default = "tests/"
