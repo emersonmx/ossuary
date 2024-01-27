@@ -1,0 +1,50 @@
+[tool.ruff]
+line-length = {{ line_length }}
+
+[tool.ruff.lint]
+select = [
+    "A",     # flake8-builtins
+    "ARG",   # flake8-unused-arguments
+    "ASYNC", # flake8-async
+    "B",     # flake8-bugbear
+    "BLE",   # flake8-blind-except
+    "C4",    # flake8-comprehensions
+    "C90",   # mccabe
+    "COM",   # flake8-commas
+    "DTZ",   # flake8-datetimez
+    "E",     # pycodestyle
+    "EM",    # flake8-errmsg
+    "ERA",   # eradicate
+    "F",     # Pyflakes
+    "FBT",   # flake8-boolean-trap
+    "FIX",   # flake8-fixme
+    "FLY",   # flynt
+    "FURB",  # refurb
+    "G",     # flake8-logging-format
+    "I",     # isort
+    "ISC",   # flake8-implicit-str-concat
+    "LOG",   # flake8-logging
+    "N",     # pep8-naming
+    "PERF",  # Perflint
+    "PGH",   # pygrep-hooks
+    "PIE",   # flake8-pie
+    "PL",    # Pylint
+    "PT",    # flake8-pytest-style
+    "PTH",   # flake8-use-pathlib
+    "Q",     # flake8-quotes
+    "RET",   # flake8-return
+    "RSE",   # flake8-raise
+    "RUF",   # Ruff-specific rules
+    "S",     # flake8-bandit
+    "SIM",   # flake8-simplify
+    "SLF",   # flake8-self
+    "SLOT",  # flake8-slots
+    "T10",   # flake8-debugger
+    "T20",   # flake8-print
+    "TCH",   # flake8-type-checking
+    "TD",    # flake8-todos
+    "TID",   # flake8-tidy-imports
+    "TRY",   # tryceratops
+    "UP",    # pyupgrade
+    "W",     # pycodestyle
+]
