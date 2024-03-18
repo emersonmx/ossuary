@@ -1,0 +1,9 @@
+{%- set semi = true -%}
+{%- if style == "simple" -%}
+{% set semi = false %}
+{%- endif -%}
+{
+    "trailingComma": "all",
+    "semi": {{ semi }},
+    "singleQuote": false
+}
