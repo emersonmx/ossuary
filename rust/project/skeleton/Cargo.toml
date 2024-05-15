@@ -1,0 +1,6 @@
+[package]
+name = "{{ name }}"
+version = "{{ version }}"
+edition = "{{ edition }}"
+
+[dependencies]

@@ -1,0 +1,16 @@
+[[inputs]]
+name = "type"
+options = ["binary", "library"]
+default = "binary"
+
+[[inputs]]
+name = "name"
+
+[[inputs]]
+name = "version"
+default = "0.1.0"
+
+[[inputs]]
+name = "edition"
+options = ["2018", "2021"]
+default = "2021"
