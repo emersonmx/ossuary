@@ -1,10 +1,8 @@
 #!/bin/bash
 
-ossuary_path="{{ ossuary_path }}"
-
-skelly -s "${ossuary_path}/javascript/direnv"
-skelly -s "${ossuary_path}/javascript/editorconfig"
-skelly -s "${ossuary_path}/javascript/prettier"
+sks javascript/direnv
+sks javascript/editorconfig
+sks javascript/prettier
 
 npm init -y
 npm pkg set private=true --json
