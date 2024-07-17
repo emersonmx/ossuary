@@ -25,10 +25,6 @@ curl "https://raw.githubusercontent.com/tsconfig/bases/main/bases/node-lts.json"
         ' >tsconfig.json
 npx ts-jest config:init
 
-mkdir -p src/
-echo 'console.log("Hello World");' >src/main.ts
-echo 'test("1 + 1 = 2", () => { expect(1 + 1).toBe(2); });' >src/main.spec.ts
-
 prettier --write .
 
 direnv allow .

@@ -14,10 +14,6 @@ npm install --save-dev \
     esbuild \
     jest
 
-mkdir -p src/
-echo 'console.log("Hello World");' >src/main.js
-echo 'test("1 + 1 = 2", () => { expect(1 + 1).toBe(2); });' >src/main.spec.js
-
 prettier --write .
 
 direnv allow .
