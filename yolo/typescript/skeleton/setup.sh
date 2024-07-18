@@ -1,8 +1,5 @@
 #!/bin/bash
 
-sks javascript/direnv
-echo "" >>.envrc
-skf snippets/envrc/dotenv >>.envrc
 sks javascript/editorconfig
 sks javascript/prettier
 
@@ -29,4 +26,9 @@ npx ts-jest config:init
 
 prettier --write .
 
+cat >.envrc <<EOF
+$(skf snippets/envrc/add_to_path path="node_modules/.bin")
+
+$(skf snippets/envrc/dotenv)
+EOF
 direnv allow .
