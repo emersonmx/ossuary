@@ -1,4 +1,3 @@
-@tsconfig/node20
 @types/jest
 @types/node
 eslint
