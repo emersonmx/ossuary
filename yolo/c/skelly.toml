@@ -1,4 +1,1 @@
-[[inputs]]
-name = "cc"
-options = ["clang", "gcc"]
-default = "clang"
+inputs = []

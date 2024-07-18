@@ -1,13 +1,18 @@
-CC={{ cc }}
+BIN_NAME := $(shell basename $(PWD))
+BUILD_DIR := build
+TARGET_PATH := $(BUILD_DIR)/$(BIN_NAME)
+SRC_DIRS := src
+SRCS := $(shell find $(SRC_DIRS) -name '*.c' )
 
 .PHONY: run
 run: build
-	./main
+	$(TARGET_PATH)
 
 .PHONY: build
 build:
-	${CC} -o main ./src/main.c
+	mkdir -p $(BUILD_DIR)
+	$(CC) -o $(TARGET_PATH) $(SRCS)
 
 .PHONY: clean
 clean:
-	rm -f main
+	rm -rf $(BUILD_DIR)
