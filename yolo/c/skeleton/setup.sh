@@ -1,7 +1,7 @@
 #!/bin/bash
 
 skf c/snippets/clang-format >.clang-format
-skf snippets/base_envrc >.envrc
+skf snippets/envrc/dotenv >.envrc
 
 echo "CC=clang" >.env
 

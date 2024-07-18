@@ -2,7 +2,7 @@
 
 sks javascript/direnv
 echo "" >>.envrc
-skf snippets/base_envrc >>.envrc
+skf snippets/envrc/dotenv >>.envrc
 sks javascript/editorconfig
 sks javascript/prettier
 
