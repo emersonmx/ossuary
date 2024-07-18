@@ -27,8 +27,8 @@ npx ts-jest config:init
 prettier --write .
 
 cat >.envrc <<EOF
-$(skf snippets/envrc/add_to_path path="node_modules/.bin")
+$(skf snippets/direnv/add_to_path path="node_modules/.bin")
 
-$(skf snippets/envrc/dotenv)
+$(skf snippets/direnv/dotenv)
 EOF
 direnv allow .
