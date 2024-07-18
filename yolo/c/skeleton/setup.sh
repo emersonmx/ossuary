@@ -1,8 +1,16 @@
 #!/bin/bash
 
 skf c/snippets/clang-format >.clang-format
-skf snippets/direnv/dotenv >.envrc
+
+cat >.editorconfig <<EOF
+$(skf snippets/editorconfig/base)
+
+$(skf snippets/editorconfig/makefile)
+
+$(skf snippets/editorconfig/markdown)
+EOF
 
 echo "CC=clang" >.env
 
+skf snippets/direnv/dotenv >.envrc
 direnv allow .
