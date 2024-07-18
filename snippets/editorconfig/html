@@ -1,0 +1,2 @@
+[*.html]
+indent_size = {{ indent_size | default(value=2) }}
