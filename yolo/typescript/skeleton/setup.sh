@@ -16,12 +16,16 @@ npm install --save-dev \
     ts-jest \
     @types/jest
 
-curl "https://raw.githubusercontent.com/tsconfig/bases/main/bases/node-lts.json" |
-    npx strip-json-comments-cli |
-    jq 'pick(.compilerOptions)
-        | .compilerOptions.rootDir="src/"
-        | .compilerOptions.outDir="dist/"
-        ' >tsconfig.json
+tsc --init \
+    --lib es2023 \
+    --module node16 \
+    --target es2022 \
+    --strict \
+    --esModuleInterop \
+    --skipLibCheck \
+    --moduleResolution node16 \
+    --rootDir src/ \
+    --outDir dist/
 npx ts-jest config:init
 
 prettier --write .
