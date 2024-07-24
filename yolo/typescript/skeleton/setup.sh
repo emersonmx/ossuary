@@ -7,11 +7,15 @@ npm init -y
 npm pkg set private=true --json
 npm pkg set scripts.build="tsc"
 npm pkg set scripts.start="node ./dist/main.js"
+npm pkg set scripts.dev="nodemon src/main.ts"
 npm pkg set scripts.test="jest"
+npm pkg set nodemonConfig.execMap.ts="ts-node"
 
 npm install --save-dev \
     typescript \
     @types/node \
+    nodemon \
+    ts-node \
     jest \
     ts-jest \
     @types/jest
