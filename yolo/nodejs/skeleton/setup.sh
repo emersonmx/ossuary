@@ -1,4 +1,5 @@
 #!/bin/bash
+# shellcheck disable=SC2046
 
 sks javascript/editorconfig
 sks javascript/prettier
@@ -10,10 +11,7 @@ npm pkg set scripts.start="node ./dist/main.js"
 npm pkg set scripts.dev="nodemon src/main.js"
 npm pkg set scripts.test="jest"
 
-npm install --save-dev \
-    esbuild \
-    nodemon \
-    jest
+npm install --save-dev $(skf snippets/nodejs/devdeps)
 
 prettier --write .
 

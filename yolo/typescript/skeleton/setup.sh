@@ -1,4 +1,5 @@
 #!/bin/bash
+# shellcheck disable=SC2046
 
 sks javascript/editorconfig
 sks javascript/prettier
@@ -11,15 +12,7 @@ npm pkg set scripts.dev="nodemon src/main.ts"
 npm pkg set scripts.test="jest"
 npm pkg set nodemonConfig.execMap.ts="ts-node"
 
-npm install --save-dev \
-    typescript \
-    @types/node \
-    nodemon \
-    ts-node \
-    jest \
-    ts-jest \
-    @types/jest
-
+npm install --save-dev $(skf snippets/typescript/devdeps)
 tsc --init \
     --lib es2023 \
     --module node16 \
