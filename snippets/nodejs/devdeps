@@ -1,0 +1,6 @@
+esbuild
+eslint
+eslint-plugin-jest
+jest
+nodemon
+prettier

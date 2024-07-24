@@ -3,6 +3,8 @@
 eslint
 eslint-plugin-jest
 jest
+nodemon
 prettier
+ts-jest
 ts-node
 typescript
