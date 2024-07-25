@@ -2,7 +2,6 @@
 @types/jest
 @types/node
 eslint
-eslint-plugin-jest
 globals
 jest
 nodemon
