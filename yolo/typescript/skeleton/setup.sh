@@ -3,6 +3,7 @@
 
 sks javascript/editorconfig
 sks javascript/prettier
+skf snippets/eslint/typescript.mjs >eslint.config.mjs
 
 npm init -y
 npm pkg set private=true --json
@@ -13,7 +14,7 @@ npm pkg set scripts.test="jest"
 npm pkg set nodemonConfig.execMap.ts="ts-node"
 
 npm install --save-dev $(skf snippets/typescript/devdeps)
-tsc --init \
+npx tsc --init \
     --lib es2023 \
     --module node16 \
     --target es2022 \
@@ -25,7 +26,7 @@ tsc --init \
     --outDir dist/
 npx ts-jest config:init
 
-prettier --write .
+npx prettier --write .
 
 cat >.envrc <<EOF
 $(skf snippets/direnv/add_to_path path="node_modules/.bin")

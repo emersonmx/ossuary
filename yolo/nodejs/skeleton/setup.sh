@@ -14,7 +14,7 @@ npm pkg set scripts.test="jest"
 
 npm install --save-dev $(skf snippets/nodejs/devdeps)
 
-prettier --write .
+npx prettier --write .
 
 cat >.envrc <<EOF
 $(skf snippets/direnv/add_to_path path="node_modules/.bin")
