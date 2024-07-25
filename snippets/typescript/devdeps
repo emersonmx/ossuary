@@ -1,10 +1,13 @@
+@eslint/js
 @types/jest
 @types/node
 eslint
 eslint-plugin-jest
+globals
 jest
 nodemon
 prettier
 ts-jest
 ts-node
 typescript
+typescript-eslint

@@ -1,6 +1,8 @@
+@eslint/js
 esbuild
 eslint
 eslint-plugin-jest
+globals
 jest
 nodemon
 prettier
