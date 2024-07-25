@@ -3,6 +3,7 @@
 
 sks javascript/editorconfig
 sks javascript/prettier
+skf snippets/eslint/nodejs.mjs >eslint.config.mjs
 
 npm init -y
 npm pkg set private=true --json
