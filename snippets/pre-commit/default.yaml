@@ -1,0 +1,35 @@
+      - id: check-ast
+        name: check python ast
+        entry: check-ast
+        language: python
+        types: [python]
+
+      - id: debug-statements
+        name: debug statements (python)
+        entry: debug-statement-hook
+        language: python
+        types: [python]
+
+      - id: name-tests-test
+        name: python tests naming
+        entry: name-tests-test
+        language: python
+        files: (^|/)tests/.+\.py$
+
+      - id: check-merge-conflict
+        name: check for merge conflicts
+        entry: check-merge-conflict
+        language: python
+        types: [text]
+
+      - id: check-added-large-files
+        name: check for added large files
+        entry: check-added-large-files
+        language: python
+        stages: [commit, push, manual]
+
+      - id: detect-private-key
+        name: detect private key
+        entry: detect-private-key
+        language: python
+        types: [text]

@@ -1,0 +1,31 @@
+      - id: ruff-format (isort)
+        name: ruff-format
+        entry: ruff check --select I --fix .
+        language: python
+        types_or: [python, pyi]
+        args: []
+        require_serial: true
+
+      - id: ruff-format
+        name: ruff-format
+        entry: ruff format --force-exclude
+        language: python
+        types_or: [python, pyi]
+        args: []
+        require_serial: true
+
+      - id: ruff fix
+        name: ruff
+        entry: ruff check . --fix --force-exclude
+        language: python
+        types_or: [python, pyi]
+        args: []
+        require_serial: true
+
+      - id: ruff
+        name: ruff
+        entry: ruff check --force-exclude
+        language: python
+        types_or: [python, pyi]
+        args: []
+        require_serial: true

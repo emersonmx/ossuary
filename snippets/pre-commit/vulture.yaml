@@ -1,0 +1,6 @@
+      - id: vulture
+        name: vulture
+        language: python
+        entry: vulture
+        types: [python]
+        require_serial: true
