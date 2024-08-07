@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION {{ cmake_version | default(value="3.30") }})
+
+project(
+    {{ project_name }}
+    VERSION {{ project_version | default(value="0.1.0") }}
+    LANGUAGES {{ project_languages | default(value="C") }})
+
+set(CMAKE_C_STANDARD {{ c_std | default(value=23) }})
+set(CMAKE_C_STANDARD_REQUIRED ON)
+set(CMAKE_C_EXTENSIONS OFF)
+
+add_subdirectory({{ src_dir | default(value="src") }})
+add_subdirectory({{ tests_dir | default(value="tests") }})
