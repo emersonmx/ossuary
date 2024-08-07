@@ -1,6 +1,6 @@
 #!/bin/bash
 
-skf c/snippets/clang-format >.clang-format
+skf snippets/clang-format >.clang-format
 
 cat >.editorconfig <<EOF
 $(skf snippets/editorconfig/base)
