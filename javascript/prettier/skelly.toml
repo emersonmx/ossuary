@@ -1,4 +1,0 @@
-[[inputs]]
-name = "style"
-options = ["default", "simple"]
-default = "default"
