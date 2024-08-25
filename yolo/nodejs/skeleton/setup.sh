@@ -1,8 +1,18 @@
 #!/bin/bash
 # shellcheck disable=SC2046
 
-sks javascript/editorconfig
-sks javascript/prettier
+cat >.editorconfig <<EOF
+$(skf snippets/editorconfig/base)
+
+$(skf snippets/editorconfig/makefile)
+
+$(skf snippets/editorconfig/markdown)
+
+$(skf snippets/editorconfig/html)
+
+$(skf snippets/editorconfig/yaml)
+EOF
+skf snippets/prettierrc.json >.prettierrc.json
 skf snippets/eslint/nodejs.mjs >eslint.config.mjs
 
 npm init -y
