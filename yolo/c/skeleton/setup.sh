@@ -18,3 +18,5 @@ skf snippets/cmake/tests >tests/CMakeLists.txt
 echo "CC=clang" >.env
 skf snippets/direnv/dotenv >.envrc
 direnv allow .
+
+rm -f "$0"

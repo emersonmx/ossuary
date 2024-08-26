@@ -44,3 +44,5 @@ $(skf snippets/direnv/add_to_path path="node_modules/.bin")
 $(skf snippets/direnv/dotenv)
 EOF
 direnv allow .
+
+rm -f "$0"

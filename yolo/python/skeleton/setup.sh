@@ -36,3 +36,5 @@ $(skf snippets/direnv/source_file path=.venv/bin/activate)
 $(skf snippets/direnv/dotenv)
 EOF
 direnv allow .
+
+rm -f "$0"
