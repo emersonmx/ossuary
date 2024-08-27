@@ -17,6 +17,7 @@ skf snippets/eslint/typescript.mjs >eslint.config.mjs
 
 npm init -y
 npm pkg set private=true --json
+npm pkg set type="module"
 npm pkg set scripts.build="tsc"
 npm pkg set scripts.start="node ./dist/main.js"
 npm pkg set scripts.dev="nodemon src/main.ts"
