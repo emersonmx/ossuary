@@ -19,4 +19,10 @@ echo "CC=clang" >.env
 skf snippets/direnv/dotenv >.envrc
 direnv allow .
 
+cat >.gitignore <<EOF
+$(curl -L https://www.toptal.com/developers/gitignore/api/c,cmake)
+
+.envrc
+EOF
+
 rm -f "$0"
