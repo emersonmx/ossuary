@@ -1,7 +1,0 @@
-[[inputs]]
-name = "type"
-options = ["binary", "library"]
-default = "binary"
-
-[[inputs]]
-name = "name"
