@@ -1,1 +1,1 @@
-[[ -f {{ path }} ]] && source {{ path }}
+test -f {{ path }} && source {{ path }}
