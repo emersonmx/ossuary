@@ -1,5 +1,0 @@
-{
-    "trailingComma": "all",
-    "semi": {{ semi | default(value=true) }},
-    "singleQuote": false
-}
