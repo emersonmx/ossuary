@@ -12,8 +12,7 @@ $(skf snippets/editorconfig/html)
 
 $(skf snippets/editorconfig/yaml)
 EOF
-skf snippets/prettierrc.json >.prettierrc.json
-skf snippets/eslint/typescript.mjs >eslint.config.mjs
+skf snippets/biome.json >biome.json
 
 npm init -y
 npm pkg set private=true --json
@@ -22,6 +21,8 @@ npm pkg set scripts.build="tsc"
 npm pkg set scripts.start="node ./dist/main.js"
 npm pkg set scripts.dev="nodemon src/main.ts"
 npm pkg set scripts.test="jest"
+npm pkg set scripts.format="biome check --write ."
+npm pkg set scripts.lint="biome lint ."
 npm pkg set nodemonConfig.execMap.ts="ts-node"
 
 npm install --save-dev $(skf snippets/typescript/devdeps)
@@ -37,7 +38,7 @@ npx tsc --init \
     --outDir dist/
 npx ts-jest config:init
 
-npx prettier --write .
+npx @biomejs/biome format --write .
 
 cat >.envrc <<EOF
 $(skf snippets/direnv/add_to_path path="node_modules/.bin")
