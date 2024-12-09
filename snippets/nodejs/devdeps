@@ -1,7 +1,5 @@
-@eslint/js
+@biomejs/biome
 esbuild
-eslint
-eslint-plugin-jest
 globals
 jest
 nodemon

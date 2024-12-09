@@ -1,7 +1,6 @@
-@eslint/js
+@biomejs/biome
 @types/jest
 @types/node
-eslint
 globals
 jest
 nodemon
@@ -9,4 +8,3 @@ prettier
 ts-jest
 ts-node
 typescript
-typescript-eslint
