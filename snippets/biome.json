@@ -12,5 +12,16 @@
         "rules": {
             "recommended": true
         }
-    }
+    },
+    "overrides": [
+        {
+            "include": ["tsconfig.json", "tsconfig.*.json"],
+            "json": {
+                "parser": {
+                    "allowComments": true,
+                    "allowTrailingCommas": true
+                }
+            }
+        }
+    ]
 }
