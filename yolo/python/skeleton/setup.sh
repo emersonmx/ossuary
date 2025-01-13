@@ -23,9 +23,8 @@ $(skf snippets/pre-commit/mypy.yaml)
 $(skf snippets/pre-commit/vulture.yaml)
 EOF
 
-python -m venv --upgrade-deps .venv
-
-.venv/bin/python -m pip install --upgrade $(skf snippets/python/devdeps)
+uv init
+uv add --upgrade --dev $(skf snippets/python/devdeps)
 
 cat >.envrc <<EOF
 export PYTHONBREAKPOINT=ipdb.set_trace
