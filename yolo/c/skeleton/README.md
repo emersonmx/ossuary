@@ -4,7 +4,7 @@
 
 ```sh
 # Setup
-cmake -B build -S . -G Ninja
+cmake -B build -S . -G Ninja -DCMAKE_BUILD_TYPE=Debug
 
 # Build
 cmake --build build
