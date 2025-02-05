@@ -1,7 +1,7 @@
 #!/bin/bash
 # shellcheck disable=SC2046
 
-bash <(skf yolo/_snippets/editorconfig/python)
+bash <(skf yolo/snippets/editorconfig/python)
 
 cat >.pre-commit-config.yaml <<EOF
 $(skf snippets/pre-commit/base.yaml)
@@ -18,9 +18,9 @@ EOF
 uv init
 uv add --upgrade --dev $(skf snippets/python/devdeps)
 
-bash <(skf yolo/_snippets/direnv/python)
+bash <(skf yolo/snippets/direnv/python)
 direnv allow .
 
-bash <(skf yolo/_snippets/gitignore/python)
+bash <(skf yolo/snippets/gitignore/python)
 
 rm -f "$0"

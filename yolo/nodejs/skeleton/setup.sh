@@ -1,7 +1,7 @@
 #!/bin/bash
 # shellcheck disable=SC2046
 
-bash <(skf yolo/_snippets/editorconfig/nodejs)
+bash <(skf yolo/snippets/editorconfig/nodejs)
 skf snippets/biome.json >biome.json
 
 npm init -y
@@ -18,9 +18,9 @@ npm install --save-dev $(skf snippets/nodejs/devdeps)
 
 npx @biomejs/biome format --write .
 
-bash <(skf yolo/_snippets/direnv/nodejs)
+bash <(skf yolo/snippets/direnv/nodejs)
 direnv allow
 
-bash <(skf yolo/_snippets/gitignore/nodejs)
+bash <(skf yolo/snippets/gitignore/nodejs)
 
 rm -f "$0"
