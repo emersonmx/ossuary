@@ -1,22 +1,12 @@
 #!/bin/bash
 # shellcheck disable=SC2046
 
-cat >.editorconfig <<EOF
-$(skf snippets/editorconfig/base)
+bash <(skf yolo/_snippets/editorconfig/rust)
 
-$(skf snippets/editorconfig/markdown)
-EOF
-
-cat >.envrc <<EOF
-$(skf snippets/direnv/dotenv)
-EOF
+skf snippets/direnv/dotenv >.envrc
 direnv allow .
 
-cat >.gitignore <<EOF
-$(curl -L https://www.toptal.com/developers/gitignore/api/rust)
-
-.envrc
-EOF
+bash <(skf yolo/_snippets/gitignore/rust)
 
 cargo init --bin
 
