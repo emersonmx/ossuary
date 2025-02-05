@@ -1,17 +1,7 @@
 #!/bin/bash
 # shellcheck disable=SC2046
 
-cat >.editorconfig <<EOF
-$(skf snippets/editorconfig/base)
-
-$(skf snippets/editorconfig/makefile)
-
-$(skf snippets/editorconfig/markdown)
-
-$(skf snippets/editorconfig/html)
-
-$(skf snippets/editorconfig/yaml)
-EOF
+bash <(skf yolo/_snippets/editorconfig/nodejs)
 skf snippets/biome.json >biome.json
 
 npm init -y
@@ -28,17 +18,9 @@ npm install --save-dev $(skf snippets/nodejs/devdeps)
 
 npx @biomejs/biome format --write .
 
-cat >.envrc <<EOF
-$(skf snippets/direnv/add_to_path path="node_modules/.bin")
+bash <(skf yolo/_snippets/direnv/nodejs)
+direnv allow
 
-$(skf snippets/direnv/dotenv)
-EOF
-direnv allow .
-
-cat >.gitignore <<EOF
-$(curl -L https://www.toptal.com/developers/gitignore/api/node)
-
-.envrc
-EOF
+bash <(skf yolo/_snippets/gitignore/nodejs)
 
 rm -f "$0"
