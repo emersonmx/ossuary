@@ -1,0 +1,39 @@
+os := "native"
+_triple := if os == "windows" {
+    "x86_64-pc-windows-gnu"
+} else if os == "linux" {
+    "x86_64-unknown-linux-gnu"
+} else if os == "wasm" {
+    "wasm32-unknown-unknown"
+} else {
+    ""
+}
+_target_triple := if _triple != "" { "--target " + _triple } else { "" }
+
+@build:
+    cargo build {{_target_triple}}
+
+@run:
+    cargo run {{_target_triple}}
+
+@watch:
+    bacon
+
+@format:
+    cargo fmt
+
+@lint:
+    cargo clippy
+
+@lint-fix:
+    cargo clippy --fix --allow-dirty
+
+@ci:
+    cargo fmt --check
+    cargo clippy
+
+@test:
+    cargo test
+
+@clean:
+    cargo clean
