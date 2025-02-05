@@ -1,15 +1,7 @@
 #!/bin/bash
 # shellcheck disable=SC2046
 
-cat >.editorconfig <<EOF
-$(skf snippets/editorconfig/base)
-
-$(skf snippets/editorconfig/makefile)
-
-$(skf snippets/editorconfig/markdown)
-
-$(skf snippets/editorconfig/yaml)
-EOF
+bash <(skf yolo/_snippets/editorconfig/python)
 
 cat >.pre-commit-config.yaml <<EOF
 $(skf snippets/pre-commit/base.yaml)
@@ -26,20 +18,9 @@ EOF
 uv init
 uv add --upgrade --dev $(skf snippets/python/devdeps)
 
-cat >.envrc <<EOF
-export PYTHONBREAKPOINT=ipdb.set_trace
-export PIP_REQUIRE_VIRTUALENV=true
-
-$(skf snippets/direnv/source_file path=.venv/bin/activate)
-
-$(skf snippets/direnv/dotenv)
-EOF
+bash <(skf yolo/_snippets/direnv/python)
 direnv allow .
 
-cat >.gitignore <<EOF
-$(curl -L https://www.toptal.com/developers/gitignore/api/python)
-
-.envrc
-EOF
+bash <(skf yolo/_snippets/gitignore/python)
 
 rm -f "$0"
