@@ -11,7 +11,7 @@ skf snippets/cmake/tests >tests/CMakeLists.txt
 
 echo "CC=clang" >.env
 skf snippets/direnv/dotenv >.envrc
-direnv allow .
+direnv allow
 
 bash <(skf yolo/snippets/gitignore/c)
 

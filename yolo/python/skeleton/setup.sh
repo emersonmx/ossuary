@@ -19,7 +19,7 @@ uv init
 uv add --upgrade --dev $(skf snippets/python/devdeps)
 
 bash <(skf yolo/snippets/direnv/python)
-direnv allow .
+direnv allow
 
 bash <(skf yolo/snippets/gitignore/python)
 

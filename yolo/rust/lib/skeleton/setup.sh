@@ -4,7 +4,7 @@
 bash <(skf yolo/snippets/editorconfig/rust)
 
 skf snippets/direnv/dotenv >.envrc
-direnv allow .
+direnv allow
 
 bash <(skf yolo/snippets/gitignore/rust)
 
