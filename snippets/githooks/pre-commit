@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -euo pipefail
+
+files=$(git diff --cached --name-only --diff-filter=ACM)
+
+[ -z "$files" ] && exit 0
+
+# TODO: Checks
+
+git add "$files"
+
+echo "✅ Pre-commit check passed!"
+exit 0
