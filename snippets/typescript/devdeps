@@ -4,7 +4,6 @@
 globals
 jest
 nodemon
-prettier
 ts-jest
 ts-node
 typescript
