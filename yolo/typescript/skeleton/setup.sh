@@ -13,7 +13,7 @@ npm pkg set scripts.build="tsc"
 npm pkg set scripts.start="node ./dist/main.js"
 npm pkg set scripts.dev="nodemon src/main.ts"
 npm pkg set scripts.test="jest"
-npm pkg set scripts.format="biome check --write ."
+npm pkg set scripts.format="biome format --write ."
 npm pkg set scripts.lint="biome lint ."
 npm pkg set nodemonConfig.execMap.ts="ts-node"
 
@@ -30,7 +30,7 @@ npx tsc --init \
     --outDir dist/
 npx ts-jest config:init
 
-npx @biomejs/biome format --write .
+npm run format
 
 shskf yolo/snippets/direnv/nodejs
 direnv allow

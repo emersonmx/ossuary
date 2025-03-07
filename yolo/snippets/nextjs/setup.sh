@@ -15,7 +15,7 @@ npx create-next-app@latest \
 shskf yolo/snippets/editorconfig/nodejs
 skf snippets/biome.json >biome.json
 
-npm pkg set scripts.format="biome check --write . && rustywind --write ."
+npm pkg set scripts.format="biome format --write . && rustywind --write ."
 npm pkg set scripts.lint="biome lint . && rustywind --check-formatted ."
 
 npm install --save-dev @biomejs/biome rustywind
