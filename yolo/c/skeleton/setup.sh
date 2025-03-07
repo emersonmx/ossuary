@@ -1,5 +1,7 @@
 #!/bin/bash
 
+rm -f "$0"
+
 skf snippets/clang-format >.clang-format
 
 shskf yolo/snippets/editorconfig/c
@@ -14,5 +16,3 @@ skf snippets/direnv/dotenv >.envrc
 direnv allow
 
 shskf yolo/snippets/gitignore/c
-
-rm -f "$0"

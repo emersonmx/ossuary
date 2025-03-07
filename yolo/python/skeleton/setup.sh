@@ -1,6 +1,8 @@
 #!/bin/bash
 # shellcheck disable=SC2046
 
+rm -f "$0"
+
 shskf yolo/snippets/editorconfig/python
 
 shskf yolo/snippets/pre-commit/python
@@ -12,5 +14,3 @@ shskf yolo/snippets/direnv/python
 direnv allow
 
 shskf yolo/snippets/gitignore/python
-
-rm -f "$0"

@@ -1,6 +1,8 @@
 #!/bin/bash
 # shellcheck disable=SC2046
 
+rm -f "$0"
+
 shskf yolo/snippets/editorconfig/nodejs
 skf snippets/biome.json >biome.json
 
@@ -22,5 +24,3 @@ shskf yolo/snippets/direnv/nodejs
 direnv allow
 
 shskf yolo/snippets/gitignore/nodejs
-
-rm -f "$0"
