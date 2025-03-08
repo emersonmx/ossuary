@@ -9,6 +9,7 @@ const config = {
 		"^.+\\.(t|j)sx?$": "@swc/jest",
 	},
 	testPathIgnorePatterns: ["/node_modules/", "/dist/"],
+	extensionsToTreatAsEsm: [".ts", ".tsx"],
 };
 
 export default config;
