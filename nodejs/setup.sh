@@ -11,8 +11,8 @@ npm pkg set scripts.build="esbuild src/main.js --bundle --outfile=dist/main.js"
 npm pkg set scripts.start="node ./dist/main.js"
 npm pkg set scripts.dev="nodemon src/main.js"
 npm pkg set scripts.test="jest"
-npm pkg set scripts.format="biome format --write ."
-npm pkg set scripts.lint="biome lint ."
+npm pkg set scripts.format="biome check --write ."
+npm pkg set scripts.lint="biome check ."
 
 npm install --save-dev $(skf nodejs/devdeps)
 

@@ -15,8 +15,8 @@ npx create-next-app@latest \
 shskf editorconfig/nodejs.sh
 skf biome/biome.json >biome.json
 
-npm pkg set scripts.format="biome format --write . && rustywind --write ."
-npm pkg set scripts.lint="biome lint . && rustywind --check-formatted ."
+npm pkg set scripts.format="rustywind --write . && biome format --write ."
+npm pkg set scripts.lint="rustywind --check-formatted . && biome check ."
 
 npm install --save-dev @biomejs/biome rustywind
 
