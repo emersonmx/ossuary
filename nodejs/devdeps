@@ -1,5 +1,5 @@
 @biomejs/biome
-esbuild
-globals
+@swc/cli
+@swc/core
+@swc/jest
 jest
-nodemon
