@@ -18,9 +18,9 @@ skf biome/biome.json >biome.json
 npm pkg set scripts.format="rustywind --write . && biome format --write ."
 npm pkg set scripts.lint="rustywind --check-formatted . && biome check ."
 
-npm install --save-dev @biomejs/biome rustywind
-
-npm run format
+npm install --save-dev $(skf typescript/devdeps) rustywind
 
 shskf direnv/nodejs.sh
 direnv allow
+
+npm run format
