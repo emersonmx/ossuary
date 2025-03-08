@@ -1,9 +1,8 @@
 @biomejs/biome
+@swc/cli
+@swc/core
+@swc/jest
 @types/jest
 @types/node
-globals
 jest
-nodemon
-ts-jest
-ts-node
 typescript

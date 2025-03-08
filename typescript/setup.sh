@@ -8,27 +8,38 @@ npm init -y
 npm pkg set private=true --json
 npm pkg set type="module"
 npm pkg set scripts.build="tsc"
-npm pkg set scripts.start="node ./dist/main.js"
+npm pkg set scripts.start="node ./dist/src/main.js"
 npm pkg set scripts.dev="nodemon src/main.ts"
 npm pkg set scripts.test="jest"
 npm pkg set scripts.format="biome check --write ."
 npm pkg set scripts.lint="biome check ."
-npm pkg set nodemonConfig.execMap.ts="ts-node"
 
 npm install --save-dev $(skf typescript/devdeps)
-npx tsc --init \
-    --lib es2023 \
-    --module node16 \
-    --target es2022 \
-    --strict \
-    --esModuleInterop \
-    --skipLibCheck \
-    --moduleResolution node16 \
-    --rootDir src/ \
-    --outDir dist/
-npx ts-jest config:init
 
-npm run format
+npx tsc --init \
+    --rootDir . \
+    --outDir dist/ \
+    --target es2024 \
+    --lib es2024 \
+    --skipLibCheck \
+    --module nodenext \
+    --noUncheckedSideEffectImports \
+    --sourceMap \
+    --verbatimModuleSyntax \
+    --strict \
+    --exactOptionalPropertyTypes \
+    --noFallthroughCasesInSwitch \
+    --noImplicitOverride \
+    --noImplicitReturns \
+    --noPropertyAccessFromIndexSignature \
+    --noUncheckedIndexedAccess \
+    --resolveJsonModule
+sed -E \
+    -e '/^\s+"compilerOptions"/ i\ \ "include": ["src/**/*", "tests/**/*"],' \
+    -e '/^\s+\/\// d' \
+    -e 's#/\*.*\*/##g' \
+    -e '/^\s*$/d' \
+    -i tsconfig.json
 
 shskf direnv/nodejs.sh
 direnv allow
@@ -45,3 +56,5 @@ test("1 + 1 = 2", () => {
     expect(1 + 1).toBe(2);
 });
 EOF
+
+npm run format
