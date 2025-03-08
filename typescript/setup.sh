@@ -9,7 +9,6 @@ npm pkg set private=true --json
 npm pkg set type="module"
 npm pkg set scripts.build="tsc"
 npm pkg set scripts.start="node ./dist/src/main.js"
-npm pkg set scripts.dev="nodemon src/main.ts"
 npm pkg set scripts.test="jest"
 npm pkg set scripts.format="biome check --write ."
 npm pkg set scripts.lint="biome check ."
