@@ -3,4 +3,3 @@ esbuild
 globals
 jest
 nodemon
-prettier
