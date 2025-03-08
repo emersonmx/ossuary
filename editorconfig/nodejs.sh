@@ -1,13 +1,13 @@
 #!/bin/bash
 
 cat >.editorconfig <<EOF
-$(skf snippets/editorconfig/base)
+$(skf editorconfig/base)
 
-$(skf snippets/editorconfig/makefile)
+$(skf editorconfig/makefile)
 
-$(skf snippets/editorconfig/markdown)
+$(skf editorconfig/markdown)
 
-$(skf snippets/editorconfig/html)
+$(skf editorconfig/html)
 
-$(skf snippets/editorconfig/yaml)
+$(skf editorconfig/yaml)
 EOF

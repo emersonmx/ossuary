@@ -1,11 +1,11 @@
 #!/bin/bash
 # shellcheck disable=SC2046
 
-shskf snippets/editorconfig/rust.sh
+shskf editorconfig/rust.sh
 
-skf snippets/direnv/dotenv >.envrc
+skf direnv/dotenv >.envrc
 direnv allow
 
-shskf snippets/gitignore/rust.sh
+shskf gitignore/rust.sh
 
 cargo init --bin

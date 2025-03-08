@@ -1,17 +1,17 @@
 #!/bin/bash
 # shellcheck disable=SC2046
 
-shskf snippets/editorconfig/python.sh
+shskf editorconfig/python.sh
 
-shskf snippets/pre-commit/python.sh
+shskf pre-commit/python.sh
 
 uv init
-uv add --upgrade --dev $(skf snippets/python/devdeps)
+uv add --upgrade --dev $(skf python/devdeps)
 
-shskf snippets/direnv/python.sh
+shskf direnv/python.sh
 direnv allow
 
-shskf snippets/gitignore/python.sh
+shskf gitignore/python.sh
 
 cat >main.py <<'EOF'
 def main() -> int:

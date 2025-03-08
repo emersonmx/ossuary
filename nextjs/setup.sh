@@ -12,8 +12,8 @@ npx create-next-app@latest \
     --no-eslint \
     --yes
 
-shskf snippets/editorconfig/nodejs.sh
-skf snippets/biome.json >biome.json
+shskf editorconfig/nodejs.sh
+skf biome/biome.json >biome.json
 
 npm pkg set scripts.format="biome format --write . && rustywind --write ."
 npm pkg set scripts.lint="biome lint . && rustywind --check-formatted ."
@@ -22,5 +22,5 @@ npm install --save-dev @biomejs/biome rustywind
 
 npm run format
 
-shskf snippets/direnv/nodejs.sh
+shskf direnv/nodejs.sh
 direnv allow

@@ -1,20 +1,20 @@
 #!/bin/bash
 
-skf snippets/clang-format >.clang-format
+skf clang-format/clang-format >.clang-format
 
-shskf snippets/editorconfig/c.sh
+shskf editorconfig/c.sh
 
 project_name=$(basename "$PWD")
 mkdir -p src/ tests/
-skf snippets/cmake/base project_name="$project_name" >CMakeLists.txt
-skf snippets/cmake/src project_name="$project_name" >src/CMakeLists.txt
-skf snippets/cmake/tests >tests/CMakeLists.txt
+skf cmake/base project_name="$project_name" >CMakeLists.txt
+skf cmake/src project_name="$project_name" >src/CMakeLists.txt
+skf cmake/tests >tests/CMakeLists.txt
 
 echo "CC=clang" >.env
-skf snippets/direnv/dotenv >.envrc
+skf direnv/dotenv >.envrc
 direnv allow
 
-shskf snippets/gitignore/c.sh
+shskf gitignore/c.sh
 
 cat >README.md <<'EOF'
 # yolo

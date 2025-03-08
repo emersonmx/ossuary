@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cat >.envrc <<EOF
-$(skf snippets/direnv/add_to_path path="node_modules/.bin")
+$(skf direnv/add_to_path path="node_modules/.bin")
 
-$(skf snippets/direnv/dotenv)
+$(skf direnv/dotenv)
 EOF
