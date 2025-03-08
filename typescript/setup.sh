@@ -7,11 +7,11 @@ skf biome/biome.json >biome.json
 npm init -y
 npm pkg set private=true --json
 npm pkg set type="module"
-npm pkg set scripts.build="tsc"
+npm pkg set scripts.build="swc src -d dist"
 npm pkg set scripts.start="node ./dist/src/main.js"
 npm pkg set scripts.test="jest"
 npm pkg set scripts.format="biome check --write ."
-npm pkg set scripts.lint="biome check ."
+npm pkg set scripts.lint="biome check . && tsc --noEmit"
 
 npm install --save-dev $(skf typescript/devdeps)
 
@@ -55,5 +55,7 @@ test("1 + 1 = 2", () => {
     expect(1 + 1).toBe(2);
 });
 EOF
+
+skf jest/swc-jest.config.mjs >jest.config.mjs
 
 npm run format
