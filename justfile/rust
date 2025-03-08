@@ -11,10 +11,10 @@ _triple := if os == "windows" {
 _target_triple := if _triple != "" { "--target " + _triple } else { "" }
 
 @build:
-    cargo build {{_target_triple}}
+    cargo build {{ '{{_target_triple}}' }}
 
 @run:
-    cargo run {{_target_triple}}
+    cargo run {{ '{{_target_triple}}' }}
 
 @watch:
     bacon
