@@ -35,7 +35,7 @@ npx tsc --init \
     --resolveJsonModule
 sed -E \
     -e '/^\s+"compilerOptions"/ i\ \ "include": ["src/**/*", "tests/**/*"],' \
-    -e '/^\s+\/\// d' \
+    -e '\#^\s+//#d' \
     -e 's#/\*.*\*/##g' \
     -e '/^\s*$/d' \
     -i tsconfig.json
