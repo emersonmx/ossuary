@@ -34,7 +34,8 @@ npx tsc --init \
     --noUncheckedIndexedAccess \
     --resolveJsonModule
 sed -E \
-    -e '/^\s+"compilerOptions"/ i\ \ "include": ["src/**/*", "tests/**/*"],' \
+    -e '/^\s+"compilerOptions"/ i\
+\  "include": ["src/**/*", "tests/**/*"],' \
     -e '\#^\s+//#d' \
     -e 's#/\*.*\*/##g' \
     -e '/^\s*$/d' \
