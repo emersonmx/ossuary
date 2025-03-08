@@ -22,3 +22,14 @@ shskf direnv/nodejs.sh
 direnv allow
 
 shskf gitignore/nodejs.sh
+
+mkdir -p src/
+cat >src/main.js <<'EOF'
+console.log("Hello World");
+EOF
+
+cat >src/main.spec.js <<'EOF'
+test("1 + 1 = 2", () => {
+    expect(1 + 1).toBe(2);
+});
+EOF
