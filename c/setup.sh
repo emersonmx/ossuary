@@ -1,6 +1,6 @@
 #!/bin/bash
 
-skf clang-format/clang-format >.clang-format
+skf clang-format/default >.clang-format
 
 shskf editorconfig/c.sh
 
