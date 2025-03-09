@@ -22,7 +22,12 @@ npm install --save-dev \
     @types/jest \
     @types/node \
     jest \
+    jest-environment-jsdom \
+    @testing-library/react \
+    @testing-library/dom \
+    @testing-library/jest-dom \
     typescript \
+    ts-node \
     @types/react \
     @types/react-dom \
     @tailwindcss/postcss \
@@ -31,7 +36,7 @@ npm install --save-dev \
 
 shskf editorconfig/nodejs.sh
 skf biome/biome.json >biome.json
-skf jest/swc-jest.config.mjs >jest.config.mjs
+skf jest/nextjs-jest.config.ts >jest.config.ts
 
 shskf direnv/nodejs.sh
 direnv allow
