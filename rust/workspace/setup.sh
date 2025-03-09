@@ -1,12 +1,13 @@
 #!/bin/bash
 # shellcheck disable=SC2046
 
+git init
+shskf gitignore/rust.sh
+
 shskf editorconfig/rust.sh
 
 skf direnv/dotenv >.envrc
 direnv allow
-
-shskf gitignore/rust.sh
 
 cat >Cargo.toml <<'EOF'
 [workspace]

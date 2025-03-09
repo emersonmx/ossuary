@@ -1,8 +1,8 @@
 #!/bin/bash
 # shellcheck disable=SC2046
 
-shskf editorconfig/nodejs.sh
-skf biome/biome.json >biome.json
+git init
+shskf gitignore/nodejs.sh
 
 npm init -y
 npm pkg set private=true --json
@@ -15,10 +15,12 @@ npm pkg set scripts.lint="biome check ."
 
 npm install --save-dev $(skf nodejs/devdeps)
 
+shskf editorconfig/nodejs.sh
+skf biome/biome.json >biome.json
+skf jest/swc-jest.config.mjs >jest.config.mjs
+
 shskf direnv/nodejs.sh
 direnv allow
-
-shskf gitignore/nodejs.sh
 
 mkdir -p src/
 cat >src/main.js <<'EOF'
@@ -30,7 +32,5 @@ test("1 + 1 = 2", () => {
     expect(1 + 1).toBe(2);
 });
 EOF
-
-skf jest/swc-jest.config.mjs >jest.config.mjs
 
 npm run format

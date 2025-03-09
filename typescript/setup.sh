@@ -1,8 +1,8 @@
 #!/bin/bash
 # shellcheck disable=SC2046
 
-shskf editorconfig/nodejs.sh
-skf biome/biome.json >biome.json
+git init
+shskf gitignore/nodejs.sh
 
 npm init -y
 npm pkg set private=true --json
@@ -15,6 +15,8 @@ npm pkg set scripts.lint="biome check . && tsc --noEmit"
 
 npm install --save-dev $(skf typescript/devdeps)
 
+shskf editorconfig/nodejs.sh
+skf biome/biome.json >biome.json
 npx tsc --init \
     --rootDir . \
     --outDir dist/ \
@@ -43,8 +45,6 @@ sed -E \
 
 shskf direnv/nodejs.sh
 direnv allow
-
-shskf gitignore/nodejs.sh
 
 mkdir -p src/
 cat >src/main.ts <<'EOF'

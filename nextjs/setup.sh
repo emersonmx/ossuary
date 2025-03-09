@@ -1,6 +1,9 @@
 #!/bin/bash
 # shellcheck disable=SC2046
 
+git init
+skf gitignore/nextjs >.gitignore
+
 npm init -y
 npm pkg set private=true --json
 npm pkg set scripts.build="next build"
@@ -9,9 +12,6 @@ npm pkg set scripts.dev="next dev --turbopack"
 npm pkg set scripts.test="jest"
 npm pkg set scripts.format="rustywind --write . && biome format --write ."
 npm pkg set scripts.lint="rustywind --check-formatted . && biome check . && tsc --noEmit"
-
-shskf editorconfig/nodejs.sh
-skf biome/biome.json >biome.json
 
 npm install --save \
     react \
@@ -29,10 +29,11 @@ npm install --save-dev \
     tailwindcss \
     rustywind
 
+shskf editorconfig/nodejs.sh
+skf biome/biome.json >biome.json
+
 shskf direnv/nodejs.sh
 direnv allow
-
-skf gitignore/nextjs >.gitignore
 
 cat >next-env.d.ts <<'EOF'
 /// <reference types="next" />

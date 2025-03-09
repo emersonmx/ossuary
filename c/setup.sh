@@ -1,20 +1,20 @@
 #!/bin/bash
 
-skf clang-format/default >.clang-format
+git init
+shskf gitignore/c.sh
 
 shskf editorconfig/c.sh
+skf clang-format/default >.clang-format
+
+echo "CC=clang" >.env
+skf direnv/dotenv >.envrc
+direnv allow
 
 project_name=$(basename "$PWD")
 mkdir -p src/ tests/
 skf cmake/base project_name="$project_name" >CMakeLists.txt
 skf cmake/src project_name="$project_name" >src/CMakeLists.txt
 skf cmake/tests >tests/CMakeLists.txt
-
-echo "CC=clang" >.env
-skf direnv/dotenv >.envrc
-direnv allow
-
-shskf gitignore/c.sh
 
 cat >README.md <<'EOF'
 # yolo
