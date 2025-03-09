@@ -31,6 +31,7 @@ npm install --save-dev \
 
 shskf editorconfig/nodejs.sh
 skf biome/biome.json >biome.json
+skf jest/swc-jest.config.mjs >jest.config.mjs
 
 shskf direnv/nodejs.sh
 direnv allow

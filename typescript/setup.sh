@@ -17,6 +17,7 @@ npm install --save-dev $(skf typescript/devdeps)
 
 shskf editorconfig/nodejs.sh
 skf biome/biome.json >biome.json
+skf jest/swc-jest.config.mjs >jest.config.mjs
 npx tsc --init \
     --rootDir . \
     --outDir dist/ \
@@ -56,7 +57,5 @@ test("1 + 1 = 2", () => {
     expect(1 + 1).toBe(2);
 });
 EOF
-
-skf jest/swc-jest.config.mjs >jest.config.mjs
 
 npm run format
