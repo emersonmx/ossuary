@@ -11,6 +11,8 @@ shskf gitignore/golang.sh
 
 go mod init "$module_path"
 
+skf justfile/golang >justfile
+
 cat >main.go <<'EOF'
 package main
 
@@ -21,5 +23,4 @@ func main() {
 }
 EOF
 
-goimports -w .
-gofumpt -w .
+just format
