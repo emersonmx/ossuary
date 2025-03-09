@@ -11,6 +11,7 @@ shskf gitignore/golang.sh
 
 go mod init "$module_path"
 
+shskf editorconfig/golang.sh
 skf justfile/golang >justfile
 
 cat >main.go <<'EOF'
