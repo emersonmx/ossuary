@@ -5,6 +5,7 @@ git init
 shskf gitignore/rust.sh
 
 shskf editorconfig/rust.sh
+skf justfile/rust >justfile
 
 skf direnv/dotenv >.envrc
 direnv allow
@@ -20,3 +21,5 @@ opt-level = 1
 [profile.dev.package."*"]
 opt-level = 3
 EOF
+
+just format
