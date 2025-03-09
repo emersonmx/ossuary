@@ -43,7 +43,7 @@ int main()
 }
 EOF
 
-cat >tests/test_example.c <<'EOF'
+cat >tests/example_test.c <<'EOF'
 #include <unity.h>
 
 void setUp(void)
@@ -54,7 +54,7 @@ void tearDown(void)
 {
 }
 
-void test_example()
+void example_test()
 {
     TEST_ASSERT_EQUAL_INT32(4, 2 + 2);
 }
@@ -62,7 +62,9 @@ void test_example()
 int main()
 {
     UNITY_BEGIN();
-    RUN_TEST(test_example);
+    RUN_TEST(example_test);
     return UNITY_END();
 }
 EOF
+
+find . -regex '.*\.\(c\|h\)' -exec clang-format -style=file --verbose -i {} \;
