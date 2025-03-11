@@ -1,4 +1,5 @@
 import pluginJs from "@eslint/js";
+import eslintConfigPrettier from "eslint-config-prettier/flat";
 import globals from "globals";
 import tseslint from "typescript-eslint";
 
@@ -9,4 +10,5 @@ export default [
 	pluginJs.configs.recommended,
 	...tseslint.configs.strict,
 	...tseslint.configs.stylistic,
+	eslintConfigPrettier,
 ];

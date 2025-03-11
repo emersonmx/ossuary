@@ -3,6 +3,7 @@
 @swc/core
 @swc/jest
 eslint
+eslint-config-prettier
 globals
 jest
 prettier

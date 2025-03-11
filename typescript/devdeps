@@ -5,6 +5,7 @@
 @types/jest
 @types/node
 eslint
+eslint-config-prettier
 globals
 jest
 prettier
