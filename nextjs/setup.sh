@@ -10,15 +10,14 @@ npm pkg set scripts.build="next build"
 npm pkg set scripts.start="next start"
 npm pkg set scripts.dev="next dev --turbopack"
 npm pkg set scripts.test="jest"
-npm pkg set scripts.format="rustywind --write . && biome format --write ."
-npm pkg set scripts.lint="rustywind --check-formatted . && biome check . && tsc --noEmit"
+npm pkg set scripts.format="rustywind --write . && next lint --fix && prettier --write ."
+npm pkg set scripts.lint="rustywind --check-formatted . && next lint && tsc --noEmit"
 
 npm install --save \
     react \
     react-dom \
     next
 npm install --save-dev \
-    @biomejs/biome \
     @types/jest \
     @types/node \
     jest \
@@ -32,10 +31,15 @@ npm install --save-dev \
     @types/react-dom \
     @tailwindcss/postcss \
     tailwindcss \
+    eslint \
+    eslint-config-next \
+    @eslint/eslintrc \
+    prettier \
     rustywind
 
 shskf editorconfig/nodejs.sh
-skf biome/biome.json >biome.json
+skf prettier/prettier.config.mjs >prettier.config.mjs
+skf eslint/nextjs.mjs >eslint.config.mjs
 skf jest/nextjs-jest.config.ts >jest.config.ts
 
 shskf direnv/nodejs.sh
