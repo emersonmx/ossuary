@@ -1,5 +1,7 @@
-@biomejs/biome
+@eslint/js
 @swc/cli
 @swc/core
 @swc/jest
+eslint
+globals
 jest

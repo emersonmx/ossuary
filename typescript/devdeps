@@ -1,8 +1,11 @@
-@biomejs/biome
+@eslint/js
 @swc/cli
 @swc/core
 @swc/jest
 @types/jest
 @types/node
+eslint
+globals
 jest
 typescript
+typescript-eslint
