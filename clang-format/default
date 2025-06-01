@@ -12,3 +12,4 @@ AlignConsecutiveMacros:
   AcrossComments: false
   AlignCompound: false
   PadOperators: false
+Cpp11BracedListStyle: false
