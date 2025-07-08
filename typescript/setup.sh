@@ -20,15 +20,11 @@ skf prettier/prettier.config.mjs >prettier.config.mjs
 skf eslint/typescript.mjs >eslint.config.mjs
 skf jest/swc-jest.config.mjs >jest.config.mjs
 npx tsc --init \
-    --rootDir . \
-    --outDir dist/ \
-    --target es2024 \
-    --lib es2024 \
-    --skipLibCheck \
+    --target esnext \
     --module nodenext \
+    --skipLibCheck \
     --noUncheckedSideEffectImports \
-    --sourceMap \
-    --verbatimModuleSyntax \
+    --resolveJsonModule \
     --strict \
     --exactOptionalPropertyTypes \
     --noFallthroughCasesInSwitch \
@@ -36,7 +32,13 @@ npx tsc --init \
     --noImplicitReturns \
     --noPropertyAccessFromIndexSignature \
     --noUncheckedIndexedAccess \
-    --resolveJsonModule
+    --erasableSyntaxOnly \
+    --verbatimModuleSyntax \
+    --noEmit \
+    --sourceMap \
+    --declaration \
+    --declarationMap \
+    --isolatedDeclarations
 sed -E \
     -e '/^\s+"compilerOptions"/ i\
 \  "include": ["src/**/*", "tests/**/*"],' \
