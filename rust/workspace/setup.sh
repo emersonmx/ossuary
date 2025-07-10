@@ -12,7 +12,7 @@ direnv allow
 
 cat >Cargo.toml <<'EOF'
 [workspace]
-resolver = "2"
+resolver = "3"
 members = []
 
 [profile.dev]
@@ -21,5 +21,3 @@ opt-level = 1
 [profile.dev.package."*"]
 opt-level = 3
 EOF
-
-just format
