@@ -1,8 +1,8 @@
 include(FetchContent)
 FetchContent_Declare(
   unity
-  GIT_REPOSITORY https://github.com/ThrowTheSwitch/Unity.git
-  GIT_TAG v2.6.1
+  URL https://github.com/ThrowTheSwitch/Unity/archive/refs/tags/v2.6.1.tar.gz
+  URL_HASH SHA256=b41a66d45a6b99758fb3202ace6178177014d52fc524bf1f72687d93e9867292
 )
 FetchContent_MakeAvailable(unity)
 
