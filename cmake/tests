@@ -8,8 +8,8 @@ FetchContent_MakeAvailable(unity)
 
 enable_testing()
 
-add_executable(example_test example_test.c)
+add_executable(example_test)
+target_sources(example_test PRIVATE example_test.c)
 target_include_directories(example_test PRIVATE ${unity_SOURCE_DIR}/src)
 target_link_libraries(example_test unity)
-
 add_test(example_test example_test)
