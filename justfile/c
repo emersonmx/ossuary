@@ -1,0 +1,17 @@
+setup type="Debug":
+    cmake -B build -S . -G Ninja -DCMAKE_BUILD_TYPE={{ '{{type}}' }}
+
+@build:
+    cmake --build build
+
+@run:
+    {{ binary_path }}
+
+@format:
+    find . -regex '.*\.\(c\|h\)' -not -path '*/build/*' -exec clang-format -style=file --verbose -i {} \;
+
+@test:
+    ctest --test-dir build/tests --output-junit xunit/results.xml
+
+@clean:
+    rm -rf build/
