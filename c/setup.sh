@@ -16,20 +16,28 @@ skf cmake/base project_name="$project_name" >CMakeLists.txt
 skf cmake/src project_name="$project_name" >src/CMakeLists.txt
 skf cmake/tests >tests/CMakeLists.txt
 
-cat >README.md <<'EOF'
-# yolo
+skf justfile/c binary_path="build/src/${project_name}" >justfile
+
+echo "# ${project_name}" >README.md
+cat >>README.md <<'EOF'
 
 ## Setup
 
 ```sh
 # Setup
-cmake -B build -S . -G Ninja -DCMAKE_BUILD_TYPE=Debug
+just setup Debug
 
 # Build
-cmake --build build
+just build
 
 # Test
-ctest --test-dir build/tests --output-junit xunit/results.xml
+just test
+
+# Format
+just format
+
+# Clean
+just clean
 ```
 EOF
 
@@ -67,4 +75,4 @@ int main()
 }
 EOF
 
-find . -regex '.*\.\(c\|h\)' -exec clang-format -style=file --verbose -i {} \;
+just format
