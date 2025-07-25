@@ -8,7 +8,10 @@ setup type="Debug":
     {{ binary_path }}
 
 @format:
-    find . -regex '.*\.\(c\|h\)' -not -path '*/build/*' -exec clang-format -style=file --verbose -i {} \;
+    find . \
+        -regex '.*\.\(c\|h\)' \
+        -not -path '*/build/*' \
+        -exec clang-format -style=file --verbose -i {} \;
 
 @test:
     ctest --test-dir build/tests --output-junit xunit/results.xml
