@@ -14,6 +14,3 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     message(STATUS "Configuring for Debug build")
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Werror -fsanitize=address")
 endif()
-
-add_subdirectory({{ src_dir | default(value="src") }})
-add_subdirectory({{ tests_dir | default(value="tests") }})

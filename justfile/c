@@ -14,7 +14,7 @@ setup type="Debug":
         -exec clang-format -style=file --verbose -i {} \;
 
 @test:
-    ctest --test-dir build/tests --output-junit xunit/results.xml
+    ctest --test-dir build --output-junit xunit/results.xml
 
 @clean:
     rm -rf build/

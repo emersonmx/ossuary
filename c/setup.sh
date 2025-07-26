@@ -11,12 +11,15 @@ skf direnv/dotenv >.envrc
 direnv allow
 
 project_name=$(basename "$PWD")
-mkdir -p src/ tests/
-skf cmake/base project_name="$project_name" >CMakeLists.txt
-skf cmake/src project_name="$project_name" >src/CMakeLists.txt
-skf cmake/tests >tests/CMakeLists.txt
+cat >CMakeLists.txt <<EOF
+$(skf cmake/base project_name="$project_name")
 
-skf justfile/c binary_path="build/src/${project_name}" >justfile
+$(skf cmake/src)
+
+$(skf cmake/tests)
+EOF
+
+skf justfile/c binary_path="build/${project_name}" >justfile
 
 echo "# ${project_name}" >README.md
 cat >>README.md <<'EOF'
@@ -41,7 +44,7 @@ just clean
 ```
 EOF
 
-cat >src/main.c <<'EOF'
+cat >main.c <<'EOF'
 #include <stdio.h>
 
 int main()
@@ -51,7 +54,7 @@ int main()
 }
 EOF
 
-cat >tests/example_test.c <<'EOF'
+cat >example_test.c <<'EOF'
 #include <unity.h>
 
 void setUp(void)
