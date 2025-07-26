@@ -18,3 +18,4 @@ setup type="Debug":
 
 @clean:
     rm -rf build/
+    rm -rf .cache/
