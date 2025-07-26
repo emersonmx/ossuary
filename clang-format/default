@@ -3,6 +3,7 @@ IndentWidth: 4
 AllowShortFunctionsOnASingleLine: None
 KeepEmptyLinesAtTheStartOfBlocks: false
 BreakBeforeBraces: Linux
+AlignAfterOpenBracket: Align
 AlignTrailingComments:
   Kind: Never
   OverEmptyLines: 0
