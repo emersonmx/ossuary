@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION {{ cmake_version | default(value="3.30") }})
+cmake_minimum_required(VERSION {{ cmake_version | default(value="4.0") }})
 
 project(
     {{ project_name }}
@@ -6,9 +6,9 @@ project(
     LANGUAGES {{ project_languages | default(value="C") }})
 
 set(CMAKE_C_STANDARD {{ c_std | default(value=23) }})
-set(CMAKE_C_STANDARD_REQUIRED ON)
-set(CMAKE_C_EXTENSIONS OFF)
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_C_STANDARD_REQUIRED True)
+set(CMAKE_C_EXTENSIONS False)
+set(CMAKE_EXPORT_COMPILE_COMMANDS True)
 
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     message(STATUS "Configuring for Debug build")
