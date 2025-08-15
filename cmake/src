@@ -1,2 +1,2 @@
-add_executable({{ project_name }})
-target_sources({{ project_name }} PRIVATE main.c)
+add_executable({{ binary_name }})
+target_sources({{ binary_name }} PRIVATE main.c)

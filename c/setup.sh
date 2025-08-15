@@ -14,7 +14,7 @@ project_name=$(basename "$PWD")
 cat >CMakeLists.txt <<EOF
 $(skf cmake/base project_name="$project_name")
 
-$(skf cmake/src project_name="$project_name")
+$(skf cmake/src binary_name="$project_name")
 
 $(skf cmake/tests)
 EOF
