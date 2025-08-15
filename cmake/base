@@ -4,12 +4,3 @@ project(
     {{ project_name }}
     VERSION {{ project_version | default(value="0.1.0") }}
     LANGUAGES {{ project_languages | default(value="C") }})
-
-set(CMAKE_C_STANDARD {{ c_std | default(value=23) }})
-set(CMAKE_C_STANDARD_REQUIRED True)
-set(CMAKE_EXPORT_COMPILE_COMMANDS True)
-
-if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-    message(STATUS "Configuring for Debug build")
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Werror -fsanitize=address")
-endif()
