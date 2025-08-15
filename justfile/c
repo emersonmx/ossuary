@@ -4,8 +4,6 @@ setup type="Debug":
         -S . \
         -G Ninja \
         -DCMAKE_BUILD_TYPE={{ '{{type}}' }} \
-        -DCMAKE_C_STANDARD={{ c_std | default(value=23) }} \
-        -DCMAKE_C_STANDARD_REQUIRED=ON \
         -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 
 @build:
