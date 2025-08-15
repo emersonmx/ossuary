@@ -6,7 +6,7 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(unity)
 
-enable_testing()
+include(CTest)
 
 add_executable(example_test)
 target_sources(example_test PRIVATE example_test.c)
