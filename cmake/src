@@ -1,3 +1,2 @@
 add_executable({{ project_name }})
 target_sources({{ project_name }} PRIVATE main.c)
-target_compile_features({{ project_name }} PRIVATE c_std_{{ c_std | default(value=23) }})

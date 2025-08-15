@@ -4,3 +4,5 @@ project(
     {{ project_name }}
     VERSION {{ project_version | default(value="0.1.0") }}
     LANGUAGES {{ project_languages | default(value="C") }})
+
+set(CMAKE_C_STANDARD {{ c_std | default(value=23) }})
