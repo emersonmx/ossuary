@@ -4,9 +4,10 @@
 git init
 shskf gitignore/nodejs.sh
 
-npm init -y
-npm pkg set private=true --json
-npm pkg set type="module"
+npm init -y \
+    --init-private \
+    --init-type module \
+    --init-license MIT
 npm pkg set scripts.build="swc src -d dist"
 npm pkg set scripts.start="node ./dist/src/main.js"
 npm pkg set scripts.test="jest"
