@@ -1,10 +1,13 @@
-import eslint from "@eslint/js";
-import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
+import js from "@eslint/js";
 import globals from "globals";
+import { defineConfig } from "eslint/config";
 
-/** @type {import('eslint').Linter.Config[]} */
-export default [
-  { languageOptions: { globals: { ...globals.node } } },
-  eslint.configs.recommended,
-  eslintPluginPrettierRecommended,
-];
+export default defineConfig([
+  { ignores: ["*.config.{js,mjs,cjs}", "dist/*"] },
+  {
+    files: ["**/*.{js,mjs,cjs}"],
+    plugins: { js },
+    extends: ["js/recommended"],
+    languageOptions: { globals: globals.node },
+  },
+]);

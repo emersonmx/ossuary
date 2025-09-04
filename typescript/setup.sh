@@ -22,6 +22,7 @@ skf eslint/typescript.mjs >eslint.config.mjs
 skf jest/swc-jest.config.mjs >jest.config.mjs
 npx tsc --init \
     --target esnext \
+    --types node,jest \
     --module nodenext \
     --skipLibCheck \
     --noUncheckedSideEffectImports \
