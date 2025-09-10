@@ -7,3 +7,4 @@ project(
 )
 
 set(CMAKE_C_STANDARD {{ c_std | default(value=23) }})
+set(CMAKE_C_STANDARD_REQUIRED True)
