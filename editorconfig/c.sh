@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 cat >.editorconfig <<EOF
 $(skf editorconfig/base)

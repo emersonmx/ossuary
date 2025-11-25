@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 cat >.pre-commit-config.yaml <<EOF
 $(skf pre-commit/base.yaml)

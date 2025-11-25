@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 cat >.envrc <<EOF
 $(skf direnv/add_to_path path="node_modules/.bin")

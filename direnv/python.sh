@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 cat >.envrc <<EOF
 export PYTHONBREAKPOINT=ipdb.set_trace
