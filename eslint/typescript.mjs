@@ -16,7 +16,6 @@ export default defineConfig([
       },
     },
   },
-  tseslint.configs.recommended,
   ...tseslint.configs.strictTypeChecked,
   ...tseslint.configs.stylisticTypeChecked,
   { ignores: ["*.config.{js,mjs,cjs,ts}", "dist/*"] },
