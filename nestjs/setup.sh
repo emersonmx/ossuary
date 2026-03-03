@@ -47,13 +47,13 @@ npm install --save-dev \
     typescript \
     typescript-eslint
 
-npm pkg set jest.moduleFileExtensions='["js","json","ts"]'
-npm pkg set jest.rootDir=src
-npm pkg set jest.testRegex='.*\\.spec\\.ts$'
-npm pkg set jest.transform.'^.+\\.(t|j)s$'='["@swc/jest"]'
-npm pkg set jest.collectCoverageFrom='["**/*.(t|j)s"]'
-npm pkg set jest.coverageDirectory=../coverage
-npm pkg set jest.testEnvironment=node
+npm pkg set jest.moduleFileExtensions='["js","json","ts"]' --json
+npm pkg set jest.rootDir="src"
+npm pkg set jest.testRegex='.*\.spec\.ts$'
+npm pkg set jest.transform\['^.+\.(t|j)s$'\]='["@swc/jest"]' --json
+npm pkg set jest.collectCoverageFrom='["**/*.(t|j)s"]' --json
+npm pkg set jest.coverageDirectory="../coverage"
+npm pkg set jest.testEnvironment="node"
 
 shskf editorconfig/nodejs.sh
 skf prettier/prettier.config.mjs >prettier.config.mjs
