@@ -4,6 +4,7 @@ import tseslint from "typescript-eslint";
 import { defineConfig } from "eslint/config";
 
 export default defineConfig([
+  { ignores: ["*.config.{js,mjs,cjs,ts}", "dist/*"] },
   {
     files: ["**/*.{js,mjs,cjs,ts,mts,cts}"],
     plugins: { js },
@@ -18,7 +19,6 @@ export default defineConfig([
   },
   ...tseslint.configs.strictTypeChecked,
   ...tseslint.configs.stylisticTypeChecked,
-  { ignores: ["*.config.{js,mjs,cjs,ts}", "dist/*"] },
   {
     files: ["**/*.spec.ts"],
     rules: {
