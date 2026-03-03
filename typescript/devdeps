@@ -8,5 +8,7 @@ eslint
 globals
 jest
 prettier
+ts-node
+tsconfig-paths
 typescript
 typescript-eslint
