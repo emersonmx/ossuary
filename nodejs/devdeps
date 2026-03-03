@@ -8,3 +8,5 @@ eslint-plugin-prettier
 globals
 jest
 prettier
+ts-node
+tsconfig-paths
