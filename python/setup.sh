@@ -8,7 +8,6 @@ uv init
 uv add --upgrade --dev $(skf python/devdeps)
 
 shskf editorconfig/python.sh
-shskf pre-commit/python.sh
 
 shskf direnv/python.sh
 direnv allow
