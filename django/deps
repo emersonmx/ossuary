@@ -1,0 +1,29 @@
+Django
+gunicorn
+psycopg[binary]
+django-environ
+whitenoise
+
+{%- if storages and storages == "yes" %}
+django-storages
+{%- endif %}
+
+{%- if taggit and taggit == "yes" %}
+django-taggit
+{%- endif %}
+
+{%- if reversion and reversion == "yes" %}
+django-reversion
+{%- endif %}
+
+{%- if import_export and import_export == "yes" %}
+django-import-export
+{%- endif %}
+
+{%- if allauth and allauth == "yes" %}
+django-allauth
+{%- endif %}
+
+{%- if wagtail and wagtail == "yes" %}
+wagtail
+{%- endif %}
