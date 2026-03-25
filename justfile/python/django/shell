@@ -1,0 +1,2 @@
+@shell:
+    uv run ./manage.py shell
