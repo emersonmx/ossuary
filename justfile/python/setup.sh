@@ -5,7 +5,7 @@ $(skf justfile/python/sync)
 
 $(skf justfile/python/run command=./main.py)
 
-$(skf justfile/python/shell command=python)
+$(skf justfile/python/shell command=ipython)
 
 $(skf justfile/python/format)
 
