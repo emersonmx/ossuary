@@ -5,7 +5,7 @@ $(skf justfile/python/sync)
 
 $(skf justfile/python/run command='./manage.py runserver')
 
-$(skf justfile/python/django/shell)
+$(skf justfile/python/shell command='./manage.py shell')
 
 $(skf justfile/python/django/make_migrations)
 

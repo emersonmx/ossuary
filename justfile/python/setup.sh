@@ -5,6 +5,8 @@ $(skf justfile/python/sync)
 
 $(skf justfile/python/run command=./main.py)
 
+$(skf justfile/python/shell command=python)
+
 $(skf justfile/python/format)
 
 $(skf justfile/python/lint)
