@@ -8,6 +8,7 @@ uv init
 uv add --upgrade --dev $(skf python/devdeps)
 
 shskf editorconfig/python.sh
+shskf justfile/python/setup.sh >justfile
 
 shskf direnv/python.sh
 direnv allow
@@ -28,4 +29,4 @@ def test_example():
     assert 1 + 1 == 2
 EOF
 
-uv run ruff format
+just format
