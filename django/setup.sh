@@ -13,7 +13,7 @@ uv init
 uv add --upgrade $(skf django/deps)
 uv add --upgrade --dev $(skf python/devdeps) $(skf django/devdeps)
 
-shskf editorconfig/python.sh
+shskf editorconfig/django.sh
 shskf justfile/python/django/setup.sh >justfile
 
 shskf direnv/python.sh
