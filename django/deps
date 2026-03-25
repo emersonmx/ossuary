@@ -27,3 +27,7 @@ django-allauth
 {%- if wagtail and wagtail == "yes" %}
 wagtail
 {%- endif %}
+
+{%- if unfold and unfold == "yes" %}
+django-unfold
+{%- endif %}
