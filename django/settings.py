@@ -8,23 +8,29 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/stable/ref/settings/
 """
 
-from os import environ as env
+from typing import Any
+import environ
 from pathlib import Path
+
+env = environ.env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+environ.Env.read_env(BASE_DIR / ".env")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/stable/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env["SECRET_KEY"]
+SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool("DEBUG", default=False)
 
-ALLOWED_HOSTS: list[str] = []
+ALLOWED_HOSTS: list[Any] = env.list("ALLOWED_HOSTS", default=[])
+
+INTERNAL_IPS: list[Any] = env.list("INTERNAL_IPS", default=[])
 
 
 # Application definition
@@ -40,6 +46,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -72,12 +79,14 @@ WSGI_APPLICATION = "{{ project_name }}.wsgi.application"
 # https://docs.djangoproject.com/en/stable/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+    "default": env.db("DATABASE_URL", default="sqlite:///db.sqlite3"),
 }
 
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/stable/ref/settings/#auth-password-validators
@@ -114,3 +123,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/stable/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# Debug settings
+if DEBUG:
+    INSTALLED_APPS = [
+        *INSTALLED_APPS,
+        "debug_toolbar",
+    ]
+    MIDDLEWARE = [
+        "debug_toolbar.middleware.DebugToolbarMiddleware",
+        *MIDDLEWARE,
+    ]
