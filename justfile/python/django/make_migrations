@@ -1,0 +1,2 @@
+@make-migrations:
+    uv run ./manage.py makemigrations
