@@ -7,7 +7,7 @@ exit 1
 {%- else -%}
 
 git init
-shskf gitignore/python.sh
+shskf gitignore/django.sh
 
 uv init
 uv add --upgrade $(skf django/deps)
