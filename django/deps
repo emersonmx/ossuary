@@ -31,3 +31,7 @@ wagtail
 {%- if unfold and unfold == "yes" %}
 django-unfold
 {%- endif %}
+
+{%- if tasks and tasks in ["db", "rq"] %}
+django-tasks-{{ tasks }}
+{%- endif %}
