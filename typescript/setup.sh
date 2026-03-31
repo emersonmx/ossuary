@@ -21,29 +21,13 @@ skf prettier/prettier.config.mjs >prettier.config.mjs
 skf eslint/typescript.mjs >eslint.config.mjs
 skf jest/swc-jest.config.mjs >jest.config.mjs
 npx tsc --init \
-    --target esnext \
+    --rootDir '.' \
+    --outDir 'dist' \
     --types node,jest \
-    --module nodenext \
-    --skipLibCheck \
-    --noUncheckedSideEffectImports \
-    --resolveJsonModule \
-    --strict \
-    --exactOptionalPropertyTypes \
-    --noFallthroughCasesInSwitch \
-    --noImplicitOverride \
-    --noImplicitReturns \
-    --noPropertyAccessFromIndexSignature \
-    --noUncheckedIndexedAccess \
-    --erasableSyntaxOnly \
-    --verbatimModuleSyntax \
-    --noEmit \
-    --sourceMap \
-    --declaration \
-    --declarationMap \
-    --isolatedDeclarations
+    --noEmit
 sed -E \
-    -e '/^\s+"compilerOptions"/ i\
-\  "include": ["src/**/*", "tests/**/*"],' \
+    -e '/^\{/ a\
+\  "include": ["src/**/*"],' \
     -e '\#^\s+//#d' \
     -e 's#/\*.*\*/##g' \
     -e '/^\s*$/d' \
