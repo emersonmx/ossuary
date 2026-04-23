@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2046
 
+{% set git = git | default(value="yes") %}
+{%- if git == "yes" -%}
 git init
 shskf gitignore/rust.sh
+{%- endif %}
 
 shskf editorconfig/rust.sh
 skf justfile/rust >justfile
