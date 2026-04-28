@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION {{ cmake_version | default(value="4.0") }})
+cmake_minimum_required(VERSION {{ cmake_version | default(value="4.3") }})
 
 project(
     {{ project_name }}
