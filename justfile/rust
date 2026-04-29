@@ -1,27 +1,27 @@
-@build:
-    cargo build
+@build *ARGS:
+    cargo build {{ '{{ ARGS }}' }}
 
-@run:
-    cargo run
+@run *ARGS:
+    cargo run {{ '{{ ARGS }}' }}
 
-@watch:
-    bacon
+@watch *ARGS:
+    bacon {{ '{{ ARGS }}' }}
 
-@format:
-    cargo fmt
+@format *ARGS:
+    cargo fmt {{ '{{ ARGS }}' }}
 
-@lint:
-    cargo clippy
+@lint *ARGS:
+    cargo clippy {{ '{{ ARGS }}' }}
 
-@lint-fix:
-    cargo clippy --fix --allow-dirty
+@lint-fix *ARGS:
+    cargo clippy --fix --allow-dirty {{ '{{ ARGS }}' }}
 
 @ci:
     cargo fmt --check
     cargo clippy
 
-@test:
-    cargo test
+@test *ARGS:
+    cargo test {{ '{{ ARGS }}' }}
 
-@clean:
-    cargo clean
+@clean *ARGS:
+    cargo clean {{ '{{ ARGS }}' }}
