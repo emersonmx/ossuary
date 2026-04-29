@@ -1,0 +1,29 @@
+@build *ARGS:
+    cargo build {{ '{{ ARGS }}' }}
+
+@run *ARGS:
+    cargo run \
+        --features bevy/dynamic_linking \
+        {{ '{{ ARGS }}' }}
+
+@watch *ARGS:
+    bacon {{ '{{ ARGS }}' }}
+
+@format *ARGS:
+    cargo fmt {{ '{{ ARGS }}' }}
+
+@lint *ARGS:
+    cargo clippy {{ '{{ ARGS }}' }}
+
+@lint-fix *ARGS:
+    cargo clippy --fix --allow-dirty {{ '{{ ARGS }}' }}
+
+@ci:
+    cargo fmt --check
+    cargo clippy
+
+@test *ARGS:
+    cargo test {{ '{{ ARGS }}' }}
+
+@clean *ARGS:
+    cargo clean {{ '{{ ARGS }}' }}
