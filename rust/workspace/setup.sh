@@ -8,7 +8,7 @@ shskf gitignore/rust.sh
 {%- endif %}
 
 shskf editorconfig/rust.sh
-skf justfile/rust >justfile
+shskf justfile/rust/setup.sh
 
 skf env/rust >.env
 skf direnv/dotenv >.envrc

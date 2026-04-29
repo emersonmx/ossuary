@@ -12,7 +12,7 @@ cargo add anyhow thiserror
 cargo add --dev rstest
 
 shskf editorconfig/rust.sh
-skf justfile/rust >justfile
+shskf justfile/rust/setup.sh
 
 skf env/rust >.env
 skf direnv/dotenv >.envrc
