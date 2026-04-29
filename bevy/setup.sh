@@ -13,7 +13,7 @@ cargo add log --features max_level_debug,release_max_level_warn
 cargo add --dev rstest
 
 shskf editorconfig/rust.sh
-skf justfile/bevy >justfile
+shskf justfile/rust/bevy/setup.sh
 
 skf env/rust >.env
 skf direnv/dotenv >.envrc
