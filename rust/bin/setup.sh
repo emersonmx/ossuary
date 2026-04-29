@@ -14,6 +14,7 @@ cargo add --dev rstest
 shskf editorconfig/rust.sh
 skf justfile/rust >justfile
 
+skf env/rust >.env
 skf direnv/dotenv >.envrc
 direnv allow
 
