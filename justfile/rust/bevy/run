@@ -1,0 +1,4 @@
+@run *ARGS:
+    cargo run \
+        --features bevy/dynamic_linking \
+        {{ '{{ ARGS }}' }}
