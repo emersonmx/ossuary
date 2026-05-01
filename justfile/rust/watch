@@ -1,2 +1,2 @@
-@watch *ARGS:
+watch *ARGS:
     bacon {{ '{{ ARGS }}' }}

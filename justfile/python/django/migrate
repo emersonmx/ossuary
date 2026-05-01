@@ -1,2 +1,2 @@
-@migrate:
+migrate:
     uv run ./manage.py migrate

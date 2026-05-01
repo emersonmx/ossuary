@@ -1,22 +1,22 @@
-@build:
+build:
     go build .
 
-@run:
+run:
     go run .
 
-@tidy:
+tidy:
     go mod tidy
 
-@format:
+format:
     goimports -w .
     gofumpt -w .
 
-@lint:
+lint:
     goimports -d .
     gofumpt -d .
 
-@test:
+test:
     go test .
 
-@clean:
+clean:
     go clean

@@ -1,2 +1,2 @@
-@add-user:
+add-user:
     uv run ./manage.py createsuperuser

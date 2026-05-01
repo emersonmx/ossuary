@@ -1,2 +1,2 @@
-@test *ARGS:
+test *ARGS:
     cargo test {{ '{{ ARGS }}' }}

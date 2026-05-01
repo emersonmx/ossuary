@@ -1,2 +1,2 @@
-@clean *ARGS:
+clean *ARGS:
     cargo clean {{ '{{ ARGS }}' }}

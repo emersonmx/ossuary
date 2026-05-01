@@ -1,2 +1,2 @@
-@lint-fix *ARGS:
+lint-fix *ARGS:
     cargo clippy --fix --allow-dirty {{ '{{ ARGS }}' }}

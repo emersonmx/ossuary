@@ -1,2 +1,2 @@
-@lint *ARGS:
+lint *ARGS:
     cargo clippy {{ '{{ ARGS }}' }}

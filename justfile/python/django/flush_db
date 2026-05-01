@@ -1,2 +1,2 @@
-@flush-db:
+flush-db:
     uv run ./manage.py flush

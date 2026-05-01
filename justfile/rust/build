@@ -1,2 +1,2 @@
-@build *ARGS:
+build *ARGS:
     cargo build {{ '{{ ARGS }}' }}

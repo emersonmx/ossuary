@@ -1,2 +1,2 @@
-@format *ARGS:
+format *ARGS:
     cargo fmt {{ '{{ ARGS }}' }}

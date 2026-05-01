@@ -1,2 +1,2 @@
-@collect-static:
+collect-static:
     uv run ./manage.py collectstatic

@@ -1,2 +1,2 @@
-@run *ARGS:
+run *ARGS:
     cargo run {{ '{{ ARGS }}' }}

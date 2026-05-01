@@ -1,11 +1,11 @@
-@run:
+run:
     godot .
 
-@editor:
+editor:
     godot --editor .
 
-@format:
+format:
     uv tool run --from gdtoolkit gdformat .
 
-@lint:
+lint:
     uv tool run --from gdtoolkit gdlint .

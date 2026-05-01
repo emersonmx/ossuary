@@ -6,21 +6,21 @@ setup type="Debug":
         -DCMAKE_BUILD_TYPE={{ '{{type}}' }} \
         -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 
-@build:
+build:
     cmake --build build
 
-@run:
+run:
     {{ binary_path }}
 
-@format:
+format:
     find . \
         -regex '.*\.\(c\|h\)' \
         -not -path '*/build/*' \
         -exec clang-format -style=file --verbose -i {} \;
 
-@test:
+test:
     ctest --test-dir build --output-junit xunit/results.xml
 
-@clean:
+clean:
     rm -rf build/
     rm -rf .cache/
