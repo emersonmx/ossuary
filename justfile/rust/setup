@@ -1,0 +1,14 @@
+setup:
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    if ! command -v lefthook &> /dev/null; then
+        echo "lefthook not found, installing..."
+        go install github.com/evilmartians/lefthook/v2@latest
+    fi
+    lefthook install
+
+    if ! command -v bacon &> /dev/null; then
+        echo "bacon not found, installing..."
+        cargo install --locked bacon
+    fi

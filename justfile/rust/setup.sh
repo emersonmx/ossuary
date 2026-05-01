@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 cat >justfile <<EOF
+$(skf justfile/rust/setup)
+
 $(skf justfile/rust/build)
 
 $(skf justfile/rust/run)
