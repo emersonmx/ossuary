@@ -1,0 +1,6 @@
+use_field_init_shorthand = true
+# unstable_features = true
+# group_imports = "One"
+# imports_granularity = "Crate"
+# normalize_comments = true
+# reorder_impl_items = true
