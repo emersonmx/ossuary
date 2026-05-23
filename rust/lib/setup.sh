@@ -12,6 +12,7 @@ cargo add thiserror
 
 shskf editorconfig/rust.sh
 shskf justfile/rust/setup.sh
+shskf rustfmt/setup.sh
 
 skf env/rust >.env
 skf direnv/dotenv >.envrc
