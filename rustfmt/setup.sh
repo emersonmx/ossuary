@@ -3,4 +3,6 @@
 
 cat >rustfmt.toml <<EOF
 $(skf rustfmt/base)
+
+$(skf rustfmt/unstable)
 EOF
