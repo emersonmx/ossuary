@@ -1,6 +1,3 @@
-[tool.ruff]
-line-length = {{ line_length | default(value=80) }}
-
 [tool.ruff.lint]
 select = [
     "A",     # flake8-builtins
