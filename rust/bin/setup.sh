@@ -9,7 +9,7 @@ shskf gitignore/rust.sh
 
 cargo init --bin --vcs=none
 cargo add anyhow thiserror
-cargo add --dev rstest
+cargo add --dev $(skf rust/devdeps)
 
 shskf editorconfig/rust.sh
 shskf justfile/rust/setup.sh
