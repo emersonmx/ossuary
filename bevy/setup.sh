@@ -10,7 +10,7 @@ shskf gitignore/rust.sh
 cargo init --bin --vcs=none
 cargo add anyhow thiserror bevy
 cargo add log --features max_level_debug,release_max_level_warn
-cargo add --dev rstest
+cargo add --dev $(skf rust/devdeps)
 
 shskf editorconfig/rust.sh
 shskf justfile/rust/bevy/setup.sh
