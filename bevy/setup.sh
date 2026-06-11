@@ -10,6 +10,7 @@ shskf gitignore/rust.sh
 cargo init --bin --vcs=none
 cargo add anyhow thiserror bevy
 cargo add log --features max_level_debug,release_max_level_warn
+cargo add tracing --features max_level_debug,release_max_level_warn
 cargo add --dev $(skf rust/devdeps)
 
 shskf editorconfig/rust.sh
@@ -27,8 +28,11 @@ linker = "clang"
 rustflags = ["-C", "link-arg=-fuse-ld=lld"]
 EOF
 
-sed -E 's/^log = \{ version = "[0-9.]+",/log = { version = "*",/' -i Cargo.toml
 cat >>Cargo.toml <<'EOF'
+
+[lints.clippy]
+too_many_arguments = "allow"
+type_complexity = "allow"
 
 [profile.dev]
 opt-level = 1
