@@ -8,7 +8,7 @@ shskf gitignore/rust.sh
 {%- endif %}
 
 cargo init --bin --vcs=none
-cargo add anyhow thiserror bevy
+cargo add anyhow thiserror bevy bevy-inspector-egui
 cargo add log --features max_level_debug,release_max_level_warn
 cargo add tracing --features max_level_debug,release_max_level_warn
 cargo add --dev $(skf rust/devdeps)
