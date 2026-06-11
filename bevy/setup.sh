@@ -22,11 +22,7 @@ skf direnv/dotenv >.envrc
 direnv allow
 
 mkdir -p .cargo/
-cat >.cargo/config.toml <<'EOF'
-[target.x86_64-unknown-linux-gnu]
-linker = "clang"
-rustflags = ["-C", "link-arg=-fuse-ld=lld"]
-EOF
+skf bevy/cargo_config.toml >.cargo/config.toml
 
 cat >>Cargo.toml <<'EOF'
 
