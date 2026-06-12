@@ -24,7 +24,7 @@ direnv allow
 mkdir -p .cargo/
 skf bevy/cargo_config.toml >.cargo/config.toml
 
-cat >>Cargo.toml <<'EOF'
+cat >>Cargo.toml <<EOF
 
 $(skf bevy/cargo_lints.toml)
 
