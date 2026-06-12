@@ -50,8 +50,13 @@ strip = "debuginfo"
 EOF
 rm -f Cargo.lock
 
+skf bevy/debug_plugins.rs >src/debug_plugins.rs
+
 cat >src/main.rs <<'EOF'
 use bevy::prelude::*;
+use debug_plugins::DebugPlugins;
+
+mod debug_plugins;
 
 fn main() {
     App::new().add_plugins(DefaultPlugins).run();
