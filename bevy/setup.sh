@@ -26,27 +26,9 @@ skf bevy/cargo_config.toml >.cargo/config.toml
 
 cat >>Cargo.toml <<'EOF'
 
-[lints.clippy]
-too_many_arguments = "allow"
-type_complexity = "allow"
+$(skf bevy/cargo_lints.toml)
 
-[profile.dev]
-opt-level = 1
-
-[profile.dev.package."*"]
-opt-level = 3
-
-[profile.dev.package.wgpu-types]
-debug-assertions = false
-
-[profile.release]
-codegen-units = 1
-lto = "thin"
-
-[profile.wasm-release]
-inherits = "release"
-opt-level = "s"
-strip = "debuginfo"
+$(skf bevy/cargo_profile.toml)
 EOF
 rm -f Cargo.lock
 

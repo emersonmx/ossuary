@@ -1,0 +1,3 @@
+[lints.clippy]
+too_many_arguments = "allow"
+type_complexity = "allow"
