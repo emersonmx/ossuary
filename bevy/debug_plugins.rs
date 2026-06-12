@@ -8,7 +8,17 @@ cfg_select! {
 
         impl Plugin for DebugPlugins {
             fn build(&self, app: &mut App) {
-                app.add_plugins((EguiPlugin::default(), WorldInspectorPlugin::new()));
+                app.add_plugins((EguiPlugin::default(), WorldInspectorPlugin::new()))
+                    .add_systems(PreUpdate, close_on_esc);
+            }
+        }
+
+        fn close_on_esc(
+            keyboard_input: Res<ButtonInput<KeyCode>>,
+            mut app_exit_messages: MessageWriter<AppExit>,
+        ) {
+            if keyboard_input.just_pressed(KeyCode::Escape) {
+                app_exit_messages.write(AppExit::Success);
             }
         }
     }

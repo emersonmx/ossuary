@@ -16,19 +16,9 @@ fn main() {
         }))
         .add_plugins(DebugPlugins)
         .add_systems(Startup, setup)
-        .add_systems(PreUpdate, close_on_esc)
         .run();
 }
 
 fn setup(mut commands: Commands) {
     commands.spawn(Camera2d);
-}
-
-fn close_on_esc(
-    keyboard_input: Res<ButtonInput<KeyCode>>,
-    mut app_exit_messages: MessageWriter<AppExit>,
-) {
-    if keyboard_input.just_pressed(KeyCode::Escape) {
-        app_exit_messages.write(AppExit::Success);
-    }
 }
