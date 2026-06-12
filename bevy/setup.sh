@@ -50,17 +50,9 @@ strip = "debuginfo"
 EOF
 rm -f Cargo.lock
 
+project_name=$(basename "$PWD")
+
 skf bevy/debug_plugins.rs >src/debug_plugins.rs
-
-cat >src/main.rs <<'EOF'
-use bevy::prelude::*;
-use debug_plugins::DebugPlugins;
-
-mod debug_plugins;
-
-fn main() {
-    App::new().add_plugins(DefaultPlugins).run();
-}
-EOF
+skf bevy/main.rs project_name="${project_name}" >src/main.rs
 
 just format
