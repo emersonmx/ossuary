@@ -34,7 +34,7 @@ rm -f Cargo.lock
 
 project_name=$(basename "$PWD")
 
-skf bevy/debug_plugins.rs >src/debug_plugins.rs
+skf bevy/debug_plugin.rs >src/debug_plugin.rs
 skf bevy/main.rs project_name="${project_name}" >src/main.rs
 
 just format

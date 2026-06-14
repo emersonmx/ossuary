@@ -1,5 +1,5 @@
 use bevy::{prelude::*, window::WindowResolution};
-use debug_plugins::DebugPlugins;
+use debug_plugins::DebugPlugin;
 
 mod debug_plugins;
 
@@ -14,7 +14,7 @@ fn main() {
             }),
             ..default()
         }))
-        .add_plugins(DebugPlugins)
+        .add_plugins(DebugPlugin)
         .add_systems(Startup, setup)
         .run();
 }
