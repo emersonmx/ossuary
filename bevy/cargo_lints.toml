@@ -1,3 +1,9 @@
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ["cfg(bevy_lint)"] }
+
 [lints.clippy]
 too_many_arguments = "allow"
 type_complexity = "allow"
+nonstandard_macro_braces = "warn"
+
+[package.metadata.bevy_lint]

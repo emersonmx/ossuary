@@ -8,10 +8,9 @@ shskf gitignore/rust.sh
 {%- endif %}
 
 cargo init --bin --vcs=none
-cargo add anyhow thiserror bevy bevy-inspector-egui
-cargo add log --features max_level_debug,release_max_level_warn
+cargo add bevy --no-default-features --features 2d,ui
 cargo add tracing --features max_level_debug,release_max_level_warn
-cargo add --dev $(skf rust/devdeps)
+cargo add --optional bevy-inspector-egui
 
 shskf editorconfig/rust.sh
 shskf justfile/rust/bevy/setup.sh
@@ -21,9 +20,13 @@ skf direnv/dotenv >.envrc
 direnv allow
 
 mkdir -p .cargo/
-skf bevy/cargo_config.toml >.cargo/config.toml
+skf bevy/dot_cargo_config.toml >.cargo/config.toml
 
+sed '/^\[features\]/,$ d' -i Cargo.toml
 cat >>Cargo.toml <<EOF
+$(skf bevy/cargo_wasm_target.toml)
+
+$(skf bevy/cargo_features.toml)
 
 $(skf bevy/cargo_lints.toml)
 
@@ -33,7 +36,7 @@ rm -f Cargo.lock
 
 project_name=$(basename "$PWD")
 
-skf bevy/debug_plugin.rs >src/debug_plugin.rs
+skf bevy/dev_tools.rs >src/dev_tools.rs
 skf bevy/main.rs project_name="${project_name}" >src/main.rs
 
 just format

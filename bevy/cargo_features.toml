@@ -1,0 +1,10 @@
+[features]
+default = ["dev_native"]
+dev = [
+    "bevy-inspector-egui",
+    "bevy/bevy_dev_tools",
+    "bevy/bevy_ui_debug",
+    "bevy/dynamic_linking",
+    "bevy/track_location",
+]
+dev_native = ["dev", "bevy/file_watcher", "bevy/embedded_watcher"]
