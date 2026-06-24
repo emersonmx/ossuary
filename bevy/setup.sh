@@ -28,11 +28,16 @@ $(skf bevy/cargo_wasm_target.toml)
 
 $(skf bevy/cargo_features.toml)
 
+$(skf bevy/cargo_bevy_cli.toml)
+
 $(skf bevy/cargo_lints.toml)
 
 $(skf bevy/cargo_profile.toml)
 EOF
 rm -f Cargo.lock
+
+skf bevy/lefthook.toml >lefthook.toml
+skf bevy/clippy.toml >clippy.toml
 
 project_name=$(basename "$PWD")
 

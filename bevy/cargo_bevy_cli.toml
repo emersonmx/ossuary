@@ -1,0 +1,8 @@
+[package.metadata.bevy_cli.release]
+default-features = false
+
+[package.metadata.bevy_cli.web]
+default-features = false
+
+[package.metadata.bevy_cli.web.dev]
+features = ["dev"]
