@@ -5,13 +5,13 @@ set quiet
 
 $(skf justfile/rust/bevy/setup)
 
-$(skf justfile/rust/build)
+$(skf justfile/rust/bevy/build)
 
 $(skf justfile/rust/bevy/run)
 
 $(skf justfile/rust/watch)
 
-$(skf justfile/rust/format)
+$(skf justfile/rust/bevy/format)
 
 $(skf justfile/rust/bevy/lint)
 

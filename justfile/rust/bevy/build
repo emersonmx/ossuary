@@ -1,0 +1,2 @@
+build *ARGS:
+    bevy build {{ '{{ ARGS }}' }}
