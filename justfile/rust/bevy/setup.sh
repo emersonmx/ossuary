@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
 cat >justfile <<EOF
-$(skf justfile/rust/setup)
+set quiet
+
+$(skf justfile/rust/bevy/setup)
 
 $(skf justfile/rust/build)
 
@@ -11,11 +13,11 @@ $(skf justfile/rust/watch)
 
 $(skf justfile/rust/format)
 
-$(skf justfile/rust/lint)
+$(skf justfile/rust/bevy/lint)
 
-$(skf justfile/rust/lint-fix)
+$(skf justfile/rust/bevy/lint-fix)
 
-$(skf justfile/rust/ci)
+$(skf justfile/rust/bevy/ci)
 
 $(skf justfile/rust/test)
 
