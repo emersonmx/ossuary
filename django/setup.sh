@@ -6,7 +6,6 @@ echo "Project name must only contain letters, numbers, and underscores."
 exit 1
 {%- else -%}
 
-git init
 shskf gitignore/django.sh
 
 uv init

@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-git init
 shskf gitignore/godot.sh
 
 touch project.godot

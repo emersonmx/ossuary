@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-git init
 shskf gitignore/c.sh
 
 shskf editorconfig/c.sh
