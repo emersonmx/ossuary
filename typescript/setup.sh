@@ -20,13 +20,9 @@ skf prettier/prettier.config.mjs >prettier.config.mjs
 skf eslint/typescript.mjs >eslint.config.mjs
 skf jest/swc-jest.config.mjs >jest.config.mjs
 npx tsc --init \
-    --rootDir '.' \
-    --outDir 'dist' \
     --types node,jest \
     --noEmit
 sed -E \
-    -e '/^\{/ a\
-\  "include": ["src/**/*"],' \
     -e '\#^\s+//#d' \
     -e 's#/\*.*\*/##g' \
     -e '/^\s*$/d' \
