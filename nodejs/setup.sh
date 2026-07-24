@@ -10,7 +10,7 @@ npm pkg set scripts.build="swc src -d dist"
 npm pkg set scripts.start="node ./dist/src/main.js"
 npm pkg set scripts.test="jest"
 npm pkg set scripts.format="eslint --fix . && prettier --write ."
-npm pkg set scripts.lint="eslint ."
+npm pkg set scripts.lint="eslint . && prettier --check ."
 
 npm install --save-dev $(skf nodejs/devdeps)
 

@@ -9,8 +9,8 @@ npm pkg set scripts.build="next build"
 npm pkg set scripts.start="next start"
 npm pkg set scripts.dev="next dev --turbopack"
 npm pkg set scripts.test="jest"
-npm pkg set scripts.format="rustywind --write . && next lint --fix && prettier --write ."
-npm pkg set scripts.lint="rustywind --check-formatted . && next lint && tsc --noEmit"
+npm pkg set scripts.format="next lint --fix && rustywind --write . && prettier --write ."
+npm pkg set scripts.lint="tsc --noEmit && next lint && rustywind --check-formatted . && prettier --check ."
 
 npm install --save \
     react \

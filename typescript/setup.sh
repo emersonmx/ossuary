@@ -11,7 +11,7 @@ npm pkg set scripts.build="swc src -d dist"
 npm pkg set scripts.start="node ./dist/src/main.js"
 npm pkg set scripts.test="jest"
 npm pkg set scripts.format="eslint --fix . && prettier --write ."
-npm pkg set scripts.lint="eslint . && tsc --noEmit"
+npm pkg set scripts.lint="tsc --noEmit && eslint . && prettier --check ."
 
 npm install --save-dev $(skf typescript/devdeps)
 

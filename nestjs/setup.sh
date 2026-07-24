@@ -16,7 +16,7 @@ npm pkg set scripts.test:cov="jest --coverage"
 npm pkg set scripts.test:debug="node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand"
 npm pkg set scripts.test:e2e="jest --config ./test/jest-e2e.json"
 npm pkg set scripts.format="eslint --fix . && prettier --write ."
-npm pkg set scripts.lint="eslint ."
+npm pkg set scripts.lint="tsc --noEmit && eslint . && prettier --check ."
 
 npm install --save \
     @nestjs/common \
