@@ -13,6 +13,7 @@ shskf justfile/rust/bevy/setup.sh
 shskf rustfmt/setup.sh
 
 skf direnv/dotenv >.envrc
+echo '# RUSTC_WRAPPER=kache' >.env
 direnv allow
 
 mkdir -p .cargo/
