@@ -1,1 +1,1 @@
-RUSTC_WRAPPER=sccache
+RUSTC_WRAPPER=kache
