@@ -1,2 +1,2 @@
-build *ARGS:
-    cargo build {{ '{{ ARGS }}' }}
+build:
+    cargo build --release

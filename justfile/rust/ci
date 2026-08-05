@@ -1,3 +1,0 @@
-ci:
-    cargo clippy
-    cargo fmt --check

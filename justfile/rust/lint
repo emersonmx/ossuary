@@ -1,2 +1,3 @@
-lint *ARGS:
-    cargo clippy {{ '{{ ARGS }}' }}
+lint:
+    cargo clippy
+    cargo fmt --check
