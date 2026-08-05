@@ -1,14 +1,18 @@
 import js from "@eslint/js";
 import globals from "globals";
 import tseslint from "typescript-eslint";
-import { defineConfig } from "eslint/config";
+import { defineConfig, globalIgnores } from "eslint/config";
 
 export default defineConfig([
-  { ignores: ["*.config.{js,mjs,cjs,ts}", "dist/*"] },
+  globalIgnores(["*.config.{js,mjs,cjs,ts}", "dist"]),
   {
     files: ["**/*.{js,mjs,cjs,ts,mts,cts}"],
     plugins: { js },
-    extends: ["js/recommended"],
+    extends: [
+      js.configs.recommended,
+      tseslint.configs.strictTypeChecked,
+      tseslint.configs.stylisticTypeChecked,
+    ],
     languageOptions: {
       globals: globals.node,
       parserOptions: {
@@ -17,8 +21,6 @@ export default defineConfig([
       },
     },
   },
-  ...tseslint.configs.strictTypeChecked,
-  ...tseslint.configs.stylisticTypeChecked,
   {
     files: ["**/*.spec.ts"],
     rules: {
