@@ -15,8 +15,6 @@ $(skf justfile/rust/bevy/format)
 
 $(skf justfile/rust/bevy/lint)
 
-$(skf justfile/rust/bevy/lint-fix)
-
 $(skf justfile/rust/bevy/ci)
 
 $(skf justfile/rust/test)

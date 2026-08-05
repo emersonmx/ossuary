@@ -1,3 +1,0 @@
-lint-fix:
-    cargo clippy --fix --allow-dirty --locked --workspace --all-targets --all-features
-    bevy_lint --fix --allow-dirty --locked --workspace --all-targets --all-features

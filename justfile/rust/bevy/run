@@ -1,2 +1,2 @@
-run *ARGS:
-    bevy run {{ '{{ ARGS }}' }}
+run:
+    bevy run

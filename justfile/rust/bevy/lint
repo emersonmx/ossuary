@@ -1,3 +1,4 @@
 lint:
     cargo clippy --locked --workspace --all-targets --all-features
     bevy_lint --locked --workspace --all-targets --all-features
+    cargo fmt --check
