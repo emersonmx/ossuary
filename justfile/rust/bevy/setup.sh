@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 cat >justfile <<EOF
-set quiet
+$(skf justfile/rust/base)
 
 $(skf justfile/rust/bevy/setup)
 
