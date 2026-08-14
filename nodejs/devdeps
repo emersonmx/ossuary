@@ -1,10 +1,1 @@
-@eslint/js
-@swc/cli
-@swc/core
-@swc/jest
-eslint
 globals
-jest
-prettier
-ts-node
-tsconfig-paths
