@@ -1,6 +1,6 @@
 @eslint/js
 eslint
 
-{%- if typescript and typescript == "yes" %}
+{%- if types and types == "yes" %}
 typescript-eslint
 {%- endif %}

@@ -1,5 +1,5 @@
 jest
 
-{%- if typescript and typescript == "yes" %}
+{%- if types and types == "yes" %}
 @types/jest
 {%- endif %}

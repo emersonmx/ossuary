@@ -1,14 +1,3 @@
-@eslint/js
-@swc/cli
-@swc/core
-@swc/jest
-@types/jest
 @types/node
-eslint
-globals
-jest
-prettier
 ts-node
-tsconfig-paths
 typescript@<7
-typescript-eslint

@@ -13,7 +13,13 @@ npm pkg set scripts.test="jest"
 npm pkg set scripts.format="eslint --fix . && prettier --write ."
 npm pkg set scripts.lint="tsc --noEmit && eslint . && prettier --check ."
 
-npm install --save-dev $(skf typescript/devdeps)
+npm install --save-dev \
+    $(skf eslint/deps types=yes) \
+    $(skf swc/deps jest=yes) \
+    $(skf jest/deps types=yes) \
+    $(skf prettier/deps) \
+    $(skf nodejs/devdeps) \
+    $(skf typescript/devdeps)
 
 shskf editorconfig/nodejs.sh
 skf prettier/prettier.config.mjs >prettier.config.mjs
