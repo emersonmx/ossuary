@@ -1,0 +1,5 @@
+jest
+
+{%- if typescript and typescript == "yes" %}
+@types/jest
+{%- endif %}
