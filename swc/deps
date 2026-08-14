@@ -1,0 +1,6 @@
+@swc/cli
+@swc/core
+
+{%- if jest and jest == "yes" %}
+@swc/jest
+{%- endif %}
