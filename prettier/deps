@@ -1,1 +1,5 @@
 prettier
+
+{%- if tailwindcss and tailwindcss == "yes" %}
+prettier-plugin-tailwindcss
+{%- endif %}
