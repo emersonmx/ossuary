@@ -7,7 +7,6 @@ export default defineConfig([
   globalIgnores(["*.config.{js,mjs,cjs,ts}", "dist"]),
   {
     files: ["**/*.{js,mjs,cjs,ts,mts,cts}"],
-    plugins: { js },
     extends: [
       js.configs.recommended,
       tseslint.configs.strictTypeChecked,
