@@ -1,8 +1,11 @@
 @tailwindcss/vite
+@testing-library/dom
+@testing-library/react
 @types/react
 @types/react-dom
 @vitejs/plugin-react
 eslint-plugin-react-hooks
 eslint-plugin-react-refresh
+jest-environment-jsdom
 tailwindcss
 vite
