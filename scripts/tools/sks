@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -euo pipefail
+
+current_dir="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
+ossuary_path="$(dirname "$current_dir")/../templates"
+
+skeleton="$ossuary_path/$1"
+shift
+
+sk -s "$skeleton" "$@"

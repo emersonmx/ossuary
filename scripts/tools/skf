@@ -2,7 +2,8 @@
 
 set -euo pipefail
 
-ossuary_path="$HOME/code/ossuary/templates"
+current_dir="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
+ossuary_path="$(dirname "$current_dir")/../templates"
 
 case "$1" in
 -l)

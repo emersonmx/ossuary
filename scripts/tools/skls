@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -euo pipefail
+
+current_dir="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
+ossuary_path="$(dirname "$current_dir")/../templates"
+
+find "${ossuary_path}" -type f |
+    sed -E \
+        -e "s#""${ossuary_path}/""##g" \
+        -e '/^\./ d' \
+        -e '/(^_|\/_)/ d' \
+        -e '/^README.md/ d'
