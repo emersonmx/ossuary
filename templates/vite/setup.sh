@@ -7,6 +7,7 @@ npm init -y \
     --init-private \
     --init-type module \
     --init-license MIT
+npm pkg set name="{{ project_name }}"
 npm pkg set scripts.build="tsc --build && vite build"
 npm pkg set scripts.dev="vite"
 npm pkg set scripts.preview="vite preview"
@@ -60,6 +61,7 @@ cat >tsconfig.app.json <<'EOF'
     "jsx": "react-jsx",
 
     /* Linting */
+    "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
@@ -86,6 +88,7 @@ cat >tsconfig.node.json <<'EOF'
     "noEmit": true,
 
     /* Linting */
+    "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
@@ -112,7 +115,7 @@ cat >index.html <<'EOF'
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>hello</title>
+    <title>{{ project_name }}</title>
   </head>
   <body>
     <div id="root"></div>
