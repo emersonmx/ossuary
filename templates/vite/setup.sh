@@ -7,10 +7,10 @@ npm init -y \
     --init-private \
     --init-type module \
     --init-license MIT
+npm pkg set scripts.build="tsc --build && vite build"
 npm pkg set scripts.dev="vite"
-npm pkg set scripts.build="tsc -b && vite build"
-npm pkg set scripts.test="jest"
 npm pkg set scripts.preview="vite preview"
+npm pkg set scripts.test="jest"
 npm pkg set scripts.format="eslint --fix . && prettier --write ."
 npm pkg set scripts.lint="tsc --noEmit && eslint . && prettier --check ."
 
