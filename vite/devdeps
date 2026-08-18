@@ -1,0 +1,8 @@
+@tailwindcss/vite
+@types/react
+@types/react-dom
+@vitejs/plugin-react
+eslint-plugin-react-hooks
+eslint-plugin-react-refresh
+tailwindcss
+vite
