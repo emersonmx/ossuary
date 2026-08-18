@@ -16,11 +16,13 @@ case "$1" in
     ;;
 -h)
     script_name=$(basename "$0")
-    echo "Usage: $script_name [options] <file> [args]"
-    echo
-    echo 'Options:'
-    echo '  -l <dir>  Specify the library directory and template file'
-    echo '  -h        Show this help message'
+    cat <<EOF
+Usage: $script_name [options] <file> [args]
+
+Options:
+    -l <dir>  Specify the library directory
+    -h        Show this help message
+EOF
     ;;
 *)
     file_path="$ossuary_path/$1"
