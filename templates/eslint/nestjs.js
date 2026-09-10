@@ -4,7 +4,7 @@ import tseslint from "typescript-eslint";
 import { defineConfig } from "eslint/config";
 
 export default defineConfig([
-  { ignores: ["*.config.{js,mjs,cjs,ts}", "dist/*", "coverage/*"] },
+  { ignores: ["dist/*", "coverage/*"] },
   {
     files: ["**/*.{js,mjs,cjs,ts,mts,cts}"],
     plugins: { js },
@@ -12,7 +12,9 @@ export default defineConfig([
     languageOptions: {
       globals: { ...globals.node, ...globals.jest },
       parserOptions: {
-        projectService: true,
+        projectService: {
+          allowDefaultProject: ["*.config.js"],
+        },
         tsconfigRootDir: import.meta.dirname,
       },
     },

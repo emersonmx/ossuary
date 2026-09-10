@@ -3,16 +3,16 @@
 
 shskf gitignore/nodejs.sh
 
-npm init -y
-npm pkg set private=true --json
-npm pkg set type="module"
-npm pkg set scripts.build="swc src -d dist"
-npm pkg set scripts.start="node ./dist/src/main.js"
-npm pkg set scripts.test="jest"
-npm pkg set scripts.format="eslint --fix . && prettier --write ."
-npm pkg set scripts.lint="eslint . && prettier --check ."
+pnpm init
+pnpm pkg set \
+    name="{{ project_name | default(value="$(basename $PWD)") }}" \
+    scripts.build="swc src -d dist" \
+    scripts.start="node ./dist/src/main.js" \
+    scripts.test="jest" \
+    scripts.format="eslint --fix . && prettier --write ." \
+    scripts.lint="tsc --noEmit && eslint . && prettier --check ."
 
-npm install --save-dev \
+pnpm add --save-dev --ignore-scripts \
     $(skf eslint/deps) \
     $(skf swc/deps jest=yes) \
     $(skf jest/deps) \
@@ -20,9 +20,9 @@ npm install --save-dev \
     $(skf nodejs/devdeps)
 
 shskf editorconfig/nodejs.sh
-skf prettier/prettier.config.mjs >prettier.config.mjs
-skf eslint/nodejs.mjs | sed 's/globals: globals.node/globals: { ...globals.node, ...globals.jest }/' >eslint.config.mjs
-skf jest/swc-jest.config.mjs >jest.config.mjs
+skf -l prettier prettier/prettier.config.js >prettier.config.js
+skf eslint/nodejs.js | sed 's/globals: globals.node/globals: { ...globals.node, ...globals.jest }/' >eslint.config.js
+skf jest/swc-jest.config.js >jest.config.js
 
 shskf direnv/nodejs.sh
 direnv allow
@@ -38,4 +38,4 @@ test("1 + 1 = 2", () => {
 });
 EOF
 
-npm run format
+pnpm format

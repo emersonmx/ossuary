@@ -3,20 +3,18 @@
 
 shskf gitignore/nodejs.sh
 
-npm init -y \
-    --init-private \
-    --init-type module \
-    --init-license MIT
-npm pkg set name="{{ project_name }}"
-npm pkg set scripts.build="tsc --build && vite build"
-npm pkg set scripts.dev="vite"
-npm pkg set scripts.preview="vite preview"
-npm pkg set scripts.test="jest"
-npm pkg set scripts.format="eslint --fix . && prettier --write ."
-npm pkg set scripts.lint="tsc --noEmit && eslint . && prettier --check ."
+pnpm init
+pnpm pkg set \
+    name="{{ project_name | default(value="$(basename $PWD)") }}" \
+    scripts.build="tsc --build && vite build" \
+    scripts.dev="vite" \
+    scripts.preview="vite preview" \
+    scripts.test="jest" \
+    scripts.format="eslint --fix . && prettier --write ." \
+    scripts.lint="tsc --noEmit && eslint . && prettier --check ."
 
-npm install --save $(skf vite/deps)
-npm install --save-dev \
+pnpm add $(skf vite/deps)
+pnpm add --save-dev --ignore-scripts \
     $(skf eslint/deps types=yes) \
     $(skf jest/deps types=yes) \
     $(skf prettier/deps tailwindcss=yes) \
@@ -25,8 +23,8 @@ npm install --save-dev \
     $(skf vite/devdeps)
 
 shskf editorconfig/nodejs.sh
-skf prettier/prettier.config.mjs tailwindcss=yes >prettier.config.mjs
-skf -l eslint vite/eslint.config.mjs >eslint.config.mjs
+skf -l prettier prettier/prettier.config.js tailwindcss=yes >prettier.config.js
+skf -l eslint vite/eslint.config.js >eslint.config.js
 
 shskf direnv/nodejs.sh
 direnv allow
@@ -169,4 +167,4 @@ function App() {
 export default App;
 EOF
 
-npm run format
+pnpm format

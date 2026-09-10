@@ -1,0 +1,17 @@
+{%- set plugins = [] -%}
+
+{%- if tailwindcss and tailwindcss == "yes" -%}
+{%- set plugins = [...plugins, "prettier-plugin-tailwindcss"] -%}
+{%- endif -%}
+
+{%- block config -%}
+{
+  "trailingComma": "all",
+  "semi": {{ semi | default(value=true) }},
+  "singleQuote": false
+  {%- if plugins | length > 0 -%}
+  ,
+  "plugins": {{ plugins | json_encode }}
+  {%- endif %}
+}
+{%- endblock %}

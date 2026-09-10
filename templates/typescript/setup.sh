@@ -3,17 +3,16 @@
 
 shskf gitignore/nodejs.sh
 
-npm init -y \
-    --init-private \
-    --init-type module \
-    --init-license MIT
-npm pkg set scripts.build="swc src -d dist"
-npm pkg set scripts.start="node ./dist/src/main.js"
-npm pkg set scripts.test="jest"
-npm pkg set scripts.format="eslint --fix . && prettier --write ."
-npm pkg set scripts.lint="tsc --noEmit && eslint . && prettier --check ."
+pnpm init
+pnpm pkg set \
+    name="{{ project_name | default(value="$(basename $PWD)") }}" \
+    scripts.build="swc src -d dist" \
+    scripts.start="node ./dist/src/main.js" \
+    scripts.test="jest" \
+    scripts.format="eslint --fix . && prettier --write ." \
+    scripts.lint="tsc --noEmit && eslint . && prettier --check ."
 
-npm install --save-dev \
+pnpm add --save-dev --ignore-scripts \
     $(skf eslint/deps types=yes) \
     $(skf swc/deps jest=yes) \
     $(skf jest/deps types=yes) \
@@ -22,10 +21,11 @@ npm install --save-dev \
     $(skf typescript/devdeps)
 
 shskf editorconfig/nodejs.sh
-skf prettier/prettier.config.mjs >prettier.config.mjs
-skf eslint/typescript.mjs >eslint.config.mjs
-skf jest/swc-jest.config.mjs >jest.config.mjs
-npx tsc --init \
+skf -l prettier prettier/prettier.config.js >prettier.config.js
+skf eslint/typescript.js >eslint.config.js
+skf jest/swc-jest.config.js >jest.config.js
+pnpm exec tsc \
+    --init \
     --types node,jest \
     --noEmit
 sed -E \
@@ -48,4 +48,4 @@ test("1 + 1 = 2", () => {
 });
 EOF
 
-npm run format
+pnpm format

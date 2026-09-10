@@ -5,9 +5,9 @@ import tseslint from "typescript-eslint";
 import { defineConfig, globalIgnores } from "eslint/config";
 
 export default defineConfig([
-  globalIgnores(["*.config.{js,mjs,cjs,ts,mts,cts}", "dist"]),
+  globalIgnores(["dist"]),
   {
-    files: {% block files -%}["**/*.{js,mjs,cjs,ts,mts,cts}"]{%- endblock %},
+    files: {% block sourceFiles -%}["**/*.{js,mjs,cjs,ts,mts,cts}"]{%- endblock %},
     extends: [
       js.configs.recommended,
       tseslint.configs.strictTypeChecked,
@@ -17,13 +17,14 @@ export default defineConfig([
     languageOptions: {
       globals: {% block globals %}globals.node{%- endblock %},
       parserOptions: {
-        projectService: true,
-        tsconfigRootDir: import.meta.dirname,
+        projectService: {
+          allowDefaultProject: ["*.config.js"],
+        },
       },
     },
   },
   {
-    files: ["**/*.spec.ts"],
+    files: {% block testFiles -%}["**/*.spec.ts", "**/*.test.ts"]{%- endblock %},
     rules: {
       "@typescript-eslint/no-unsafe-call": "off",
       "@typescript-eslint/no-unsafe-member-access": "off",
