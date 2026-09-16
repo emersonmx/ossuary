@@ -3,7 +3,7 @@
 set -euo pipefail
 
 current_dir="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
-ossuary_path="$(dirname "$current_dir")/../templates"
+ossuary_path=$(realpath "$(dirname "$current_dir")/../templates")
 
 find "${ossuary_path}" -type f |
     sed -E \
