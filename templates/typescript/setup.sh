@@ -21,7 +21,7 @@ pnpm add --save-dev --ignore-scripts \
     $(skf typescript/devdeps)
 
 shskf editorconfig/nodejs.sh
-skf -l prettier prettier/prettier.config.js >prettier.config.js
+skf -l prettier/prettierrc prettier/prettier.config.js >prettier.config.js
 skf eslint/typescript.js >eslint.config.js
 skf jest/swc-jest.config.js >jest.config.js
 pnpm exec tsc \
