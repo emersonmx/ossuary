@@ -20,7 +20,7 @@ pnpm add --save-dev --ignore-scripts \
     $(skf nodejs/devdeps)
 
 shskf editorconfig/nodejs.sh
-skf -l prettier prettier/prettier.config.js >prettier.config.js
+skf -l prettier/prettierrc prettier/prettier.config.js >prettier.config.js
 skf eslint/nodejs.js | sed 's/globals: globals.node/globals: { ...globals.node, ...globals.jest }/' >eslint.config.js
 skf jest/swc-jest.config.js >jest.config.js
 
