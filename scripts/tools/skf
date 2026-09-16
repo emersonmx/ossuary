@@ -1,4 +1,5 @@
 #!/bin/bash
+# shellcheck disable=SC2086
 
 set -euo pipefail
 
@@ -7,12 +8,23 @@ ossuary_path=$(realpath "$(dirname "$current_dir")/../templates")
 
 case "$1" in
 -l)
-    shift
-    library_dir="$ossuary_path/$1"
-    shift
+    library_list=""
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+        -l)
+            shift
+            library_list="$library_list -l $ossuary_path/$1"
+            shift
+            ;;
+        *)
+            break
+            ;;
+        esac
+    done
+
     template_path="$ossuary_path/$1"
     shift
-    sk -l "$library_dir" -f "$template_path" "$@"
+    sk ${library_list} -f "$template_path" "$@"
     ;;
 -h)
     script_name=$(basename "$0")
@@ -20,8 +32,8 @@ case "$1" in
 Usage: $script_name [options] <file> [args]
 
 Options:
-    -l <dir>  Specify the library directory
-    -h        Show this help message
+    -l [<path>|<name=path>]  Specify the library directory
+    -h                       Show this help message
 EOF
     ;;
 *)
