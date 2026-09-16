@@ -23,8 +23,8 @@ pnpm add --save-dev --ignore-scripts \
     $(skf vite/devdeps)
 
 shskf editorconfig/nodejs.sh
-skf -l prettier prettier/prettier.config.js tailwindcss=yes >prettier.config.js
-skf -l eslint vite/eslint.config.js >eslint.config.js
+skf -l prettier/prettierrc prettier/prettier.config.js tailwindcss=yes >prettier.config.js
+skf -l eslint/typescript.js vite/eslint.config.js >eslint.config.js
 
 shskf direnv/nodejs.sh
 direnv allow
