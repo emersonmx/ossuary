@@ -1,7 +1,7 @@
 set quiet
 
-setup:
-    ./scripts/setup.sh
+setup-tools:
+    ./scripts/setup_tools.sh
 
 reset-tmp:
     mkdir -p tmp
