@@ -6,4 +6,4 @@ pnpm pkg set \
     name="{{ project_name | default(value="$(basename $PWD)") }}"
 
 pnpm add --save-dev --ignore-scripts \
-    $(skf nodejs/devdeps)
+    $(skf nodejs/deps)
