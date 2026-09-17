@@ -1,19 +1,23 @@
+{%- set keywords = keywords | split(pat=',') if keywords else [] -%}
+{%- set keywords = [k | trim for k in keywords] -%}
+{%- set keywords = [k for k in keywords if k ] -%}
+
 {%- set deps = deps | split(pat=',') if deps else [] -%}
-{%- set deps = [pkg | trim for pkg in deps] -%}
-{%- set deps = [pkg for pkg in deps if pkg ] -%}
+{%- set deps = [d | trim for d in deps] -%}
+{%- set deps = [d for d in deps if d] -%}
 
 {%- set devdeps = devdeps | split(pat=',') if devdeps else [] -%}
-{%- set devdeps = [pkg | trim for pkg in devdeps] -%}
-{%- set devdeps = [pkg for pkg in devdeps if pkg ] -%}
+{%- set devdeps = [d | trim for d in devdeps] -%}
+{%- set devdeps = [d for d in devdeps if d] -%}
 
 {
   "name": "{{ project_name }}",
-  "version": "1.0.0",
-  "description": "",
-  "keywords": [],
-  "license": "ISC",
-  "author": "",
-  "main": "index.js",
+  "version": "{{ version | default(value="1.0.0") }}",
+  "description": "{{ description | default(value="") }}",
+  "keywords": {{ keywords }},
+  "license": "{{ license | default(value="ISC") }}",
+  "author": "{{ author | default(value="") }}",
+  "main": "{{ main | default(value="index.js") }}",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
