@@ -2,6 +2,15 @@
 {%- set keywords = [k | trim for k in keywords] -%}
 {%- set keywords = [k for k in keywords if k ] -%}
 
+{%- set scripts = [
+  ["build", build_script | default(value="")],
+  ["start", start_script | default(value="")],
+  ["test", test_script | default(value="")],
+  ["format", format_script | default(value="")],
+  ["lint", lint_script | default(value="")]
+] -%}
+{%- set scripts = [s for s in scripts if s[1]] -%}
+
 {%- set deps = deps | split(pat=',') if deps else [] -%}
 {%- set deps = [d | trim for d in deps] -%}
 {%- set deps = [d for d in deps if d] -%}
@@ -20,7 +29,10 @@
   "main": "{{ main | default(value="index.js") }}",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  {%- for s in scripts %}
+    "{{ s[0] }}": "{{ s[1] }}"
+    {{- "" if loop.last else "," }}
+  {%- endfor %}
   },
   "dependencies": {
   {%- for pkg in deps %}
