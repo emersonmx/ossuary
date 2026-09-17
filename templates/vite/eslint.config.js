@@ -10,8 +10,8 @@ import reactRefresh from "eslint-plugin-react-refresh";
 {%- endblock %}
 
 {% block extends %}
-      reactHooks.configs.flat.recommended,
-      reactRefresh.configs.vite,
+            reactHooks.configs.flat.recommended,
+            reactRefresh.configs.vite,
 {%- endblock %}
 
 {% block globals -%}
