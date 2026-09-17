@@ -6,12 +6,12 @@
 
 {%- block config -%}
 {
-  "trailingComma": "all",
-  "semi": {{ semi | default(value=true) }},
-  "singleQuote": false
-  {%- if plugins | length > 0 -%}
-  ,
-  "plugins": {{ plugins | json_encode }}
-  {%- endif %}
+    "trailingComma": "all",
+    "semi": {{ semi | default(value=true) }},
+    "singleQuote": false
+    {%- if plugins | length > 0 -%}
+    ,
+    "plugins": {{ plugins | json_encode }}
+    {%- endif %}
 }
 {%- endblock %}
