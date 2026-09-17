@@ -20,30 +20,30 @@
 {%- set devdeps = [d for d in devdeps if d] -%}
 
 {
-  "name": "{{ name }}",
-  "version": "{{ version | default(value="1.0.0") }}",
-  "description": "{{ description | default(value="") }}",
-  "keywords": {{ keywords }},
-  "license": "{{ license | default(value="ISC") }}",
-  "author": "{{ author | default(value="") }}",
-  "main": "{{ main | default(value="index.js") }}",
-  "type": "module",
-  "scripts": {
-  {%- for s in scripts %}
-    "{{ s[0] }}": "{{ s[1] }}"
-    {{- "" if loop.last else "," }}
-  {%- endfor %}
-  },
-  "dependencies": {
-  {%- for pkg in deps %}
-    "{{ pkg }}": "*"
-    {{- "" if loop.last else "," }}
-  {%- endfor %}
-  },
-  "devDependencies": {
-  {%- for pkg in devdeps %}
-    "{{ pkg }}": "*"
-    {{- "" if loop.last else "," }}
-  {%- endfor %}
-  }
+    "name": "{{ name }}",
+    "version": "{{ version | default(value="1.0.0") }}",
+    "description": "{{ description | default(value="") }}",
+    "keywords": {{ keywords }},
+    "license": "{{ license | default(value="ISC") }}",
+    "author": "{{ author | default(value="") }}",
+    "main": "{{ main | default(value="index.js") }}",
+    "type": "module",
+    "scripts": {
+    {%- for s in scripts %}
+        "{{ s[0] }}": "{{ s[1] }}"
+        {{- "" if loop.last else "," }}
+    {%- endfor %}
+    },
+    "dependencies": {
+    {%- for pkg in deps %}
+        "{{ pkg }}": "*"
+        {{- "" if loop.last else "," }}
+    {%- endfor %}
+    },
+    "devDependencies": {
+    {%- for pkg in devdeps %}
+        "{{ pkg }}": "*"
+        {{- "" if loop.last else "," }}
+    {%- endfor %}
+    }
 }
