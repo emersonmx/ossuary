@@ -20,7 +20,7 @@
 {%- set devdeps = [d for d in devdeps if d] -%}
 
 {
-  "name": "{{ project_name }}",
+  "name": "{{ name }}",
   "version": "{{ version | default(value="1.0.0") }}",
   "description": "{{ description | default(value="") }}",
   "keywords": {{ keywords }},
