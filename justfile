@@ -1,9 +1,7 @@
 set quiet
 
-setup-tools:
+setup:
     ./scripts/setup_tools.sh
-
-setup-completions:
     ./scripts/setup_completions.sh
 
 reset-tmp:
