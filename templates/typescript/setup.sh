@@ -2,7 +2,7 @@
 # shellcheck disable=SC2046
 
 pnpm add --save-dev --ignore-scripts \
-    $(skf typescript/devdeps)
+    $(skf typescript/deps)
 
 pnpm exec tsc \
     --init \
