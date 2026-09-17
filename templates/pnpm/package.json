@@ -1,0 +1,33 @@
+{%- set deps = deps | split(pat=',') if deps else [] -%}
+{%- set deps = [pkg | trim for pkg in deps] -%}
+{%- set deps = [pkg for pkg in deps if pkg ] -%}
+
+{%- set devdeps = devdeps | split(pat=',') if devdeps else [] -%}
+{%- set devdeps = [pkg | trim for pkg in devdeps] -%}
+{%- set devdeps = [pkg for pkg in devdeps if pkg ] -%}
+
+{
+  "name": "{{ project_name }}",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+  {%- for pkg in deps %}
+    "{{ pkg }}": "*"
+    {{- "" if loop.last else "," }}
+  {%- endfor %}
+  },
+  "devDependencies": {
+  {%- for pkg in devdeps %}
+    "{{ pkg }}": "*"
+    {{- "" if loop.last else "," }}
+  {%- endfor %}
+  }
+}
