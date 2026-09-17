@@ -17,8 +17,8 @@ pnpm add --save-dev --ignore-scripts \
     $(skf swc/deps jest=yes) \
     $(skf jest/deps types=yes) \
     $(skf prettier/deps) \
-    $(skf nodejs/devdeps) \
-    $(skf typescript/devdeps)
+    $(skf nodejs/deps) \
+    $(skf typescript/deps)
 
 shskf editorconfig/nodejs.sh
 skf -l prettier/prettierrc prettier/prettier.config.js >prettier.config.js
