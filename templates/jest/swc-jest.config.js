@@ -5,11 +5,11 @@
 
 /** @type {import('jest').Config} */
 const config = {
-	transform: {
-		"^.+\\.(t|j)sx?$": "@swc/jest",
-	},
-	testPathIgnorePatterns: ["/node_modules/", "/dist/"],
-	extensionsToTreatAsEsm: [".ts", ".tsx"],
+    transform: {
+        "^.+\\.(t|j)sx?$": "@swc/jest",
+    },
+    testPathIgnorePatterns: ["/node_modules/", "/dist/"],
+    extensionsToTreatAsEsm: [".ts", ".tsx"],
 };
 
 export default config;
