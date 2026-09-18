@@ -2,7 +2,7 @@
 
 _shskf() {
     local -a files
-    files=(${(f)"$(skls | grep '\.sh$')"})
+    files=(${(f)"$(skfls | grep '\.sh$')"})
     _describe 'shell file' files
 }
 

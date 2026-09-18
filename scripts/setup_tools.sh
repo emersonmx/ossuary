@@ -12,7 +12,7 @@ tools=(
     shskf
     sk
     skf
-    skls
+    skfls
     sks
 )
 

@@ -2,7 +2,7 @@
 
 _skf() {
     local -a files
-    files=(${(f)"$(skls)"})
+    files=(${(f)"$(skfls)"})
     _describe 'file' files
 }
 
