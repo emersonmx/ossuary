@@ -1,23 +1,34 @@
-{%- set keywords = keywords | split(pat=',') if keywords else [] -%}
-{%- set keywords = [k | trim for k in keywords] -%}
-{%- set keywords = [k for k in keywords if k ] -%}
+{%- set keywords = [
+    d for d in [
+        d | trim for d in keywords | split(pat=',')
+    ]
+    if d
+] if keywords else [] -%}
 
 {%- set scripts = [
-  ["build", build_script | default(value="")],
-  ["start", start_script | default(value="")],
-  ["test", test_script | default(value="")],
-  ["format", format_script | default(value="")],
-  ["lint", lint_script | default(value="")]
+    s for s in [
+      ["build", build_script | default(value="")],
+      ["start", start_script | default(value="")],
+      ["test", test_script | default(value="")],
+      ["format", format_script | default(value="")],
+      ["lint", lint_script | default(value="")]
+    ]
+    if s[1]
 ] -%}
-{%- set scripts = [s for s in scripts if s[1]] -%}
 
-{%- set deps = deps | split(pat=',') if deps else [] -%}
-{%- set deps = [d | trim for d in deps] -%}
-{%- set deps = [d for d in deps if d] -%}
+{%- set deps = [
+    d for d in [
+        d | trim for d in deps | split(pat=',')
+    ]
+    if d
+] if deps else [] -%}
 
-{%- set devdeps = devdeps | split(pat=',') if devdeps else [] -%}
-{%- set devdeps = [d | trim for d in devdeps] -%}
-{%- set devdeps = [d for d in devdeps if d] -%}
+{%- set devdeps = [
+    d for d in [
+        d | trim for d in devdeps | split(pat=',')
+    ]
+    if d
+] if devdeps else [] -%}
 
 {
     "name": "{{ name }}",
