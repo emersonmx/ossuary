@@ -1,0 +1,9 @@
+#compdef sks
+
+_sks() {
+    local -a files
+    files=(${(f)"$(sksls)"})
+    _describe 'file' files
+}
+
+compdef _sks sks

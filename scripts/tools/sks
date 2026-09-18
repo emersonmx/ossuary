@@ -3,7 +3,7 @@
 set -euo pipefail
 
 current_dir="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
-ossuary_path=$(realpath "$(dirname "$current_dir")/../templates")
+ossuary_path=$(realpath "$(dirname "$current_dir")/../projects")
 
 skeleton="$ossuary_path/$1"
 shift
