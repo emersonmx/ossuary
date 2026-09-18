@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# shellcheck disable=SC2046
 
 shskf gitignore/golang.sh
 

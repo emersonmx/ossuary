@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# shellcheck disable=SC2046
 
 {% if project_name is matching("[^0-9a-zA-Z_]") -%}
 echo "Project name must only contain letters, numbers, and underscores."
