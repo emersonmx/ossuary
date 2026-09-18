@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 cat >.envrc <<EOF
-$(skf direnv/add_to_path path="node_modules/.bin")
+$(skf direnv/layout type=node)
 
 $(skf direnv/dotenv)
 EOF
