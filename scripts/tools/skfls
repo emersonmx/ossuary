@@ -3,10 +3,10 @@
 set -euo pipefail
 
 current_dir="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
-templates_path=$(realpath "$(dirname "$current_dir")/../templates")
+templates_dir=$(realpath "$(dirname "$current_dir")/../templates")
 
-find "${templates_path}" -type f |
+find "${templates_dir}" -type f |
     sed -E \
-        -e "s#""${templates_path}/""##g" \
+        -e "s#^""${templates_dir}/""##g" \
         -e '/^\./ d' \
         -e '/(^_|\/_)/ d'
