@@ -8,4 +8,4 @@ projects_dir=$(realpath "$(dirname "$current_dir")/../projects")
 project="$projects_dir/$1.sh"
 shift
 
-shskf "$project" "$@"
+sh <(sk -f "$project" "$@")
