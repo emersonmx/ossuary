@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC2046
 
+set -euo pipefail
+
+git init
 shskf gitignore/rust.sh
+
+cargo init --lib --vcs=none
+cargo add thiserror
+cargo add --dev $(skf rust/devdeps)
 
 shskf editorconfig/rust.sh
 shskf justfile/rust/setup.sh
@@ -10,14 +18,4 @@ skf env/rust >.env
 skf direnv/dotenv >.envrc
 direnv allow
 
-cat >Cargo.toml <<'EOF'
-[workspace]
-resolver = "3"
-members = []
-
-[profile.dev]
-opt-level = 1
-
-[profile.dev.package."*"]
-opt-level = 3
-EOF
+just format

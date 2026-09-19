@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
+git init
 shskf gitignore/c.sh
 
 shskf editorconfig/c.sh

@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
+git init
 shskf gitignore/golang.sh
 
 go mod init {{ module_path | default(value='example.com/$(basename "$PWD")') }}

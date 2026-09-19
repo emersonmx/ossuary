@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2046
 
+set -euo pipefail
+
+git init
 shskf gitignore/python.sh
 
 uv init

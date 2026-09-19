@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
+git init
 shskf gitignore/rust.sh
 
 cargo init --bin --vcs=none
