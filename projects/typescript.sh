@@ -3,11 +3,10 @@
 set -euo pipefail
 
 git init
-
 shskf gitignore/nodejs.sh
 
 skf nodejs/package.json \
-    name='{{ project_name }}' \
+    name="{{ project_name | default(value="$(basename $PWD)") }}" \
     build_script="tsc" \
     start_script="node dist/src/main.js" \
     test_script="vitest run" \
@@ -22,6 +21,8 @@ skf nodejs/package.json \
         ) | tr '\n' ','
     )" \
     >package.json
+
+pnpm update --latest
 
 shskf editorconfig/nodejs.sh
 skf prettier/prettierrc >.prettierrc
@@ -55,3 +56,5 @@ test("1 + 1 = 2", () => {
     expect(1 + 1).toBe(2);
 });
 EOF
+
+pnpm format
