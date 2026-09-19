@@ -13,6 +13,8 @@ tools=(
     sk
     skf
     skfls
+    skp
+    skpls
 )
 
 for tool in "${tools[@]}"; do

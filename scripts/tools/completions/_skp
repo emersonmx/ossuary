@@ -1,0 +1,9 @@
+#compdef skp
+
+_skp() {
+    local -a files
+    files=(${(f)"$(skpls)"})
+    _describe 'file' files
+}
+
+compdef _skp skp

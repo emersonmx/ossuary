@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -euo pipefail
+
+current_dir="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
+projects_dir=$(realpath "$(dirname "$current_dir")/../projects")
+
+project="$projects_dir/$1.sh"
+shift
+
+shskf "$project" "$@"
