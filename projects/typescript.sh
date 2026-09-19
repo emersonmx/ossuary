@@ -1,37 +1,43 @@
 #!/usr/bin/env bash
-# shellcheck disable=SC2046
+
+set -euo pipefail
+
+git init
 
 shskf gitignore/nodejs.sh
 
-pnpm init
-pnpm pkg set \
-    name="{{ project_name | default(value="$(basename $PWD)") }}" \
-    scripts.build="swc src -d dist" \
-    scripts.start="node ./dist/src/main.js" \
-    scripts.test="jest" \
-    scripts.format="eslint --fix . && prettier --write ." \
-    scripts.lint="tsc --noEmit && eslint . && prettier --check ."
-
-pnpm add --save-dev --ignore-scripts \
-    $(skf eslint/deps types=yes) \
-    $(skf swc/deps jest=yes) \
-    $(skf jest/deps types=yes) \
-    $(skf prettier/deps) \
-    $(skf nodejs/deps) \
-    $(skf typescript/deps)
+skf nodejs/package.json \
+    name='{{ project_name }}' \
+    build_script="tsc" \
+    start_script="node dist/src/main.js" \
+    test_script="vitest run" \
+    format_script="oxlint --fix . && prettier --write ." \
+    lint_script="tsc --noEmit && oxlint . && prettier --check ." \
+    devdeps="$(
+        (
+            skf oxlint/deps
+            skf vitest/deps
+            skf prettier/deps
+            skf typescript/deps
+        ) | tr '\n' ','
+    )" \
+    >package.json
 
 shskf editorconfig/nodejs.sh
-skf -l prettier/prettierrc prettier/prettier.config.js >prettier.config.js
-skf eslint/typescript.js >eslint.config.js
-skf jest/swc-jest.config.js >jest.config.js
-pnpm exec tsc \
+skf prettier/prettierrc >.prettierrc
+skf oxlint/oxlintrc.json >.oxlintrc.json
+
+pnpx --package typescript tsc \
     --init \
-    --types node,jest \
-    --noEmit
+    --rootDir . \
+    --outDir dist \
+    --types node
 sed -E \
     -e '\#^\s+//#d' \
     -e 's#/\*.*\*/##g' \
     -e '/^\s*$/d' \
+    -e 's/^  \}$/  },/' \
+    -e '/^  \},$/a\  "files": ["src/main.ts"],' \
     -i tsconfig.json
 
 shskf direnv/nodejs.sh
@@ -43,9 +49,9 @@ console.log("Hello World");
 EOF
 
 cat >src/main.spec.ts <<'EOF'
+import { test, expect } from "vitest";
+
 test("1 + 1 = 2", () => {
     expect(1 + 1).toBe(2);
 });
 EOF
-
-pnpm format
