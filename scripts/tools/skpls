@@ -7,8 +7,6 @@ projects_dir=$(realpath "$(dirname "$current_dir")/../projects")
 
 find "${projects_dir}" -type f |
     sed -E \
-        -e '/\.sh$/!d' \
         -e "s#^""${projects_dir}/""##g" \
-        -e 's/\.sh$//g' \
-        -e '/^\./ d' \
-        -e '/(^_|\/_)/ d'
+        -e '/\.sh$/!d' \
+        -e 's/\.sh$//g'
