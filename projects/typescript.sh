@@ -7,7 +7,7 @@ shskf gitignore/nodejs.sh
 
 skf nodejs/package.json \
     name="{{ project_name | default(value="$(basename $PWD)") }}" \
-    build_script="tsc" \
+    build_script="tsc -p tsconfig.build.json" \
     start_script="node dist/src/main.js" \
     test_script="vitest run" \
     format_script="oxlint --fix . && prettier --write ." \
@@ -41,6 +41,7 @@ sed -E \
     -e 's/^  \}$/  },/' \
     -e '/^  \},$/a\  "include": ["src/"],' \
     -i tsconfig.json
+skf typescript/tsconfig.build.json >tsconfig.build.json
 
 shskf direnv/nodejs.sh
 direnv allow
