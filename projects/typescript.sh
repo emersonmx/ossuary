@@ -27,18 +27,19 @@ pnpm update --latest
 shskf editorconfig/nodejs.sh
 skf prettier/prettierrc >.prettierrc
 skf oxlint/oxlintrc.json >.oxlintrc.json
+skf vitest/vitest.config.js >vitest.config.js
 
 pnpx --package typescript tsc \
     --init \
     --rootDir . \
     --outDir dist \
-    --types node
+    --types node,vitest/globals
 sed -E \
     -e '\#^\s+//#d' \
     -e 's#/\*.*\*/##g' \
     -e '/^\s*$/d' \
     -e 's/^  \}$/  },/' \
-    -e '/^  \},$/a\  "files": ["src/main.ts"],' \
+    -e '/^  \},$/a\  "include": ["src/"],' \
     -i tsconfig.json
 
 shskf direnv/nodejs.sh
@@ -50,8 +51,6 @@ console.log("Hello World");
 EOF
 
 cat >src/main.spec.ts <<'EOF'
-import { test, expect } from "vitest";
-
 test("1 + 1 = 2", () => {
     expect(1 + 1).toBe(2);
 });
