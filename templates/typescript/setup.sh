@@ -7,9 +7,10 @@ pnpm add --save-dev --ignore-scripts \
 pnpm exec tsc \
     --init \
     --types node
-
 sed -E \
     -e '\#^\s+//#d' \
     -e 's#/\*.*\*/##g' \
     -e '/^\s*$/d' \
     -i tsconfig.json
+
+skf typescript/tsconfig.build.json >tsconfig.build.json
