@@ -4,5 +4,5 @@
 pnpm add --save-dev --ignore-scripts \
     $(skf typescript/deps)
 
-skf typescript/tsconfig.json types=node >tsconfig.json
+skf typescript/tsconfig.json >tsconfig.json
 skf typescript/tsconfig.build.json >tsconfig.build.json

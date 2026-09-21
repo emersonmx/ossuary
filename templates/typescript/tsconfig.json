@@ -3,7 +3,7 @@
         t | trim for t in types | split(pat=',')
     ]
     if t
-] if types else [] -%}
+] if types else ["node"] -%}
 {%- set include = [
     i for i in [
         i | trim for i in include | split(pat=',')
