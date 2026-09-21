@@ -4,13 +4,5 @@
 pnpm add --save-dev --ignore-scripts \
     $(skf typescript/deps)
 
-pnpm exec tsc \
-    --init \
-    --types node
-sed -E \
-    -e '\#^\s+//#d' \
-    -e 's#/\*.*\*/##g' \
-    -e '/^\s*$/d' \
-    -i tsconfig.json
-
+skf typescript/tsconfig.json types=node >tsconfig.json
 skf typescript/tsconfig.build.json >tsconfig.build.json
