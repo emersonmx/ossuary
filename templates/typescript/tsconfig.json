@@ -1,0 +1,33 @@
+{%- set types = [
+    t for t in [
+        t | trim for t in types | split(pat=',')
+    ]
+    if t
+] if types else [] -%}
+{%- set include = [
+    i for i in [
+        i | trim for i in include | split(pat=',')
+    ]
+    if i
+] if include else ["src/"] -%}
+
+{
+    "compilerOptions": {
+        "module": "nodenext",
+        "target": "esnext",
+        "types": {{ types }},
+        "sourceMap": true,
+        "declaration": true,
+        "declarationMap": true,
+        "noUncheckedIndexedAccess": true,
+        "exactOptionalPropertyTypes": true,
+        "strict": true,
+        "jsx": "react-jsx",
+        "verbatimModuleSyntax": true,
+        "isolatedModules": true,
+        "noUncheckedSideEffectImports": true,
+        "moduleDetection": "force",
+        "skipLibCheck": true
+    },
+    "include": {{ include }},
+}
