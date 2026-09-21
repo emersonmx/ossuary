@@ -1,8 +1,8 @@
 {%- set keywords = [
-    d for d in [
-        d | trim for d in keywords | split(pat=',')
+    k for k in [
+        k | trim for k in keywords | split(pat=',')
     ]
-    if d
+    if k
 ] if keywords else [] -%}
 
 {%- set scripts = [
