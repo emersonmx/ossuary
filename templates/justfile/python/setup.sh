@@ -7,11 +7,11 @@ $(skf justfile/python/run command=./main.py)
 
 $(skf justfile/python/shell command=ipython)
 
+$(skf justfile/python/test)
+
 $(skf justfile/python/format)
 
 $(skf justfile/python/lint)
-
-$(skf justfile/python/test)
 
 $(skf justfile/python/clean)
 EOF
