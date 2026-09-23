@@ -1,0 +1,30 @@
+{%- set name = name | lower -%}
+{%- if name is not matching(pat="^[_a-z][_a-z0-9]*$") -%}
+{{- throw(
+    message="The project name must start with a letter or underscore and can "
+           ~ "only contain lowercase letters, numbers, and underscores."
+) -}}
+{%- endif -%}
+
+{%- set deps = [
+    d for d in [
+        d | trim for d in deps | split(pat=',')
+    ]
+    if d
+] if deps else [] -%}
+
+{%- set devdeps = [
+    d for d in [
+        d | trim for d in devdeps | split(pat=',')
+    ]
+    if d
+] if devdeps else [] -%}
+
+[project]
+name = "{{ name }}"
+version = "0.1.0"
+requires-python = ">={{ requires_python }}"
+dependencies = {{ deps }}
+
+[dependency-groups]
+dev = {{ devdeps }}
