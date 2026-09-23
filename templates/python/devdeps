@@ -1,7 +1,5 @@
-bandit
 coverage
 ipdb
-mypy
 pytest
 ruff
-vulture
+ty
