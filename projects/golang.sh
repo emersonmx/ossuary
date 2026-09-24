@@ -10,6 +10,9 @@ go mod init {{ module_path | default(value='example.com/$(basename "$PWD")') }}
 shskf editorconfig/golang.sh
 skf justfile/golang >justfile
 
+skf direnv/dotenv >.envrc
+direnv allow
+
 cat >main.go <<'EOF'
 package main
 
