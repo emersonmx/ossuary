@@ -1,3 +1,15 @@
+set quiet
+
+setup:
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    if ! command -v lefthook &> /dev/null; then
+        echo "lefthook not found, installing..."
+        go install github.com/evilmartians/lefthook/v2@latest
+    fi
+    lefthook install
+
 build:
     go build .
 
