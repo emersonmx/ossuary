@@ -19,8 +19,8 @@ resolver = "3"
 members = []
 
 [profile.dev]
-opt-level = 1
+opt-level = {{ profile_dev_opt_level | default(value=1) }}
 
 [profile.dev.package."*"]
-opt-level = 3
+opt-level = {{ profile_dev_package_opt_level | default(value=3) }}
 EOF
