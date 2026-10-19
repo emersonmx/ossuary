@@ -8,5 +8,5 @@ git config core.hooksPath $githooks_dir
 
 mkdir -p $githooks_dir
 
-skf githooks/pre-commit >$githooks_dir/pre-commit
+skf githooks/{{ pre_commit | default(value="pre-commit") }} >$githooks_dir/pre-commit
 chmod +x $githooks_dir/pre-commit

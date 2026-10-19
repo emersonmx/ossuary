@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+cd "$(git rev-parse --show-toplevel)"
+
+if git diff --cached --quiet --diff-filter=ACMR -- '*.rs' '*Cargo.toml' Cargo.lock; then
+    echo "[pre-commit] no staged Rust files, skipping"
+    exit 0
+fi
+
+echo "[pre-commit] check format..."
+cargo fmt --all --check
+
+echo "[pre-commit] check static analysis..."
+cargo clippy --workspace --all-targets -- -D warnings
+
+echo "[pre-commit] run tests..."
+cargo nextest run --workspace --no-tests=warn

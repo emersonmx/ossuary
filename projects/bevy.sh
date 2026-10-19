@@ -13,6 +13,7 @@ cargo add --optional bevy-inspector-egui
 shskf editorconfig/rust.sh
 shskf justfile/rust/bevy/setup.sh
 shskf rustfmt/setup.sh
+shskf githooks/setup.sh pre_commit=bevy/pre-commit
 
 skf env/rust >.env
 skf direnv/dotenv >.envrc
@@ -35,7 +36,6 @@ $(skf bevy/cargo_profile.toml)
 EOF
 rm -f Cargo.lock
 
-skf bevy/lefthook.toml >lefthook.toml
 skf bevy/clippy.toml >clippy.toml
 
 project_name=$(basename "$PWD")

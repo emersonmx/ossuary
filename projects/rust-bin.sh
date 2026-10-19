@@ -13,6 +13,7 @@ cargo add --dev $(skf rust/devdeps)
 shskf editorconfig/rust.sh
 shskf justfile/rust/setup.sh
 shskf rustfmt/setup.sh
+shskf githooks/setup.sh pre_commit=rust/pre-commit
 
 skf env/rust >.env
 skf direnv/dotenv >.envrc
