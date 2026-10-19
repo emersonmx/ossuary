@@ -2,13 +2,19 @@ setup:
     #!/usr/bin/env bash
     set -euo pipefail
 
-    if ! command -v lefthook &> /dev/null; then
-        echo "lefthook not found, installing..."
-        go install github.com/evilmartians/lefthook/v2@latest
+    git config core.hooksPath .githooks
+
+    if ! command -v kache &> /dev/null; then
+        echo "kache not found, installing..."
+        RUSTC_WRAPPER= cargo install --locked kache
     fi
-    lefthook install
 
     if ! command -v bacon &> /dev/null; then
         echo "bacon not found, installing..."
         cargo install --locked bacon
+    fi
+
+    if ! command -v cargo-nextest &> /dev/null; then
+        echo "cargo-nextest not found, installing..."
+        cargo install --locked cargo-nextest
     fi

@@ -2,6 +2,8 @@ setup:
     #!/usr/bin/env bash
     set -euo pipefail
 
+    git config core.hooksPath .githooks
+
     if ! command -v bevy &> /dev/null; then
         echo "bevy not found, installing..."
         cli_version="cli-v0.1.0-alpha.2"
@@ -26,13 +28,17 @@ setup:
             bevy_lint
     fi
 
-    if ! command -v lefthook &> /dev/null; then
-        echo "lefthook not found, installing..."
-        go install github.com/evilmartians/lefthook/v2@latest
+    if ! command -v kache &> /dev/null; then
+        echo "kache not found, installing..."
+        RUSTC_WRAPPER= cargo install --locked kache
     fi
-    lefthook install
 
     if ! command -v bacon &> /dev/null; then
         echo "bacon not found, installing..."
         cargo install --locked bacon
+    fi
+
+    if ! command -v cargo-nextest &> /dev/null; then
+        echo "cargo-nextest not found, installing..."
+        cargo install --locked cargo-nextest
     fi
