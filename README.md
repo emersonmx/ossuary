@@ -103,9 +103,6 @@ skelly -f /path-to-ossuary/templates/gitignore/rust.sh
 # render a file with a library
 skelly -l /path-to-ossuary/templates/eslint/typescript.js \
     -f /path-to-ossuary/templates/vite/eslint.config.js
-
-# scaffold a skeleton directory (with skelly.toml and skeleton/)
-skelly -s /path-to-skeleton -o output-dir input_a=123 input_b=456
 ```
 
 See `skelly --help` for all options.
