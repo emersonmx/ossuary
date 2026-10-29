@@ -1,5 +1,10 @@
+{%- set typechecker = typechecker
+    if typechecker in ['ty', 'mypy', 'pyright']
+    else 'pyright'
+-%}
+
 coverage
 ipdb
 pytest
 ruff
-ty
+{{ typechecker }}
