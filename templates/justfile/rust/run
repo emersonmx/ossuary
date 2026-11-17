@@ -1,2 +1,3 @@
+# Run the app
 run:
     cargo run

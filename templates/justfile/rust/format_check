@@ -1,0 +1,3 @@
+# Fail if any file is not formatted (no changes made)
+format-check:
+    cargo fmt --all --check

@@ -1,2 +1,3 @@
+# Build the app
 build:
     cargo build --release

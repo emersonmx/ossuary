@@ -1,0 +1,3 @@
+# Check Cargo.lock against RustSec (needs the network)
+audit:
+    cargo audit --deny unsound

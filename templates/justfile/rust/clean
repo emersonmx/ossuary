@@ -1,2 +1,3 @@
+# Remove build outputs
 clean:
     cargo clean

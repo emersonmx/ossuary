@@ -1,3 +1,4 @@
+# Format code and apply lint fixes
 format:
-    cargo clippy --fix --allow-dirty
-    cargo fmt
+    cargo clippy --workspace --fix --allow-dirty
+    cargo fmt --all

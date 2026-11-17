@@ -1,0 +1,3 @@
+# Check that every crate in Cargo.lock is audited or exempted (supply-chain/)
+vet:
+    cargo vet --locked

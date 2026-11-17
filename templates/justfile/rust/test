@@ -1,2 +1,3 @@
+# Run the test suite
 test *ARGS:
-    cargo test {{ '{{ ARGS }}' }}
+    cargo nextest run --workspace {{ '{{ ARGS }}' }}

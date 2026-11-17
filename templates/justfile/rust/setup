@@ -1,8 +1,16 @@
+# Install tool dependencies and enable the repo's git hooks
 setup:
     #!/usr/bin/env bash
     set -euo pipefail
 
     git config core.hooksPath .githooks
+    git config blame.ignoreRevsFile .git-blame-ignore-revs
+
+    if ! command -v gitleaks &> /dev/null; then
+        echo "gitleaks not found, install it, see:" >&2
+        echo "    https://github.com/gitleaks/gitleaks#installing" >&2
+        exit 1
+    fi
 
     if ! command -v kache &> /dev/null; then
         echo "kache not found, installing..."
@@ -17,4 +25,14 @@ setup:
     if ! command -v cargo-nextest &> /dev/null; then
         echo "cargo-nextest not found, installing..."
         cargo install --locked cargo-nextest
+    fi
+
+    if ! command -v cargo-audit &> /dev/null; then
+        echo "cargo-audit not found, installing..."
+        cargo install --locked cargo-audit
+    fi
+
+    if ! command -v cargo-vet &> /dev/null; then
+        echo "cargo-vet not found, installing..."
+        cargo install --locked cargo-vet
     fi
