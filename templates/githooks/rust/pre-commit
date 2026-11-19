@@ -4,16 +4,29 @@ set -euo pipefail
 
 cd "$(git rev-parse --show-toplevel)"
 
-if git diff --cached --quiet --diff-filter=ACMR -- '*.rs' '*Cargo.toml' Cargo.lock; then
+echo "[pre-commit] secrets: scan staged changes..."
+gitleaks git --pre-commit --staged --redact
+
+mapfile -d '' rust < <(git diff --cached --name-only -z --diff-filter=ACMR -- '*.rs' Cargo.toml Cargo.lock)
+mapfile -d '' manifests < <(git diff --cached --name-only -z --diff-filter=ACMR -- Cargo.toml '*/Cargo.toml' Cargo.lock)
+
+if [[ ${#rust[@]} -eq 0 && ${#manifests[@]} -eq 0 ]]; then
     echo "[pre-commit] no staged Rust files, skipping"
     exit 0
 fi
 
-echo "[pre-commit] check format..."
-cargo fmt --all --check
+if [[ ${#rust[@]} -gt 0 ]]; then
+    echo "[pre-commit] rust: check format..."
+    just format-check
 
-echo "[pre-commit] check static analysis..."
-cargo clippy --workspace --all-targets -- -D warnings
+    echo "[pre-commit] rust: static analysis..."
+    just lint
 
-echo "[pre-commit] run tests..."
-cargo nextest run --workspace --no-tests=warn
+    echo "[pre-commit] rust: run tests..."
+    just test
+fi
+
+if [[ ${#manifests[@]} -gt 0 ]]; then
+    echo "[pre-commit] rust: vet dependencies..."
+    just vet
+fi

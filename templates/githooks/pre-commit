@@ -2,6 +2,11 @@
 
 set -euo pipefail
 
+cd "$(git rev-parse --show-toplevel)"
+
+echo "[pre-commit] secrets: scan staged changes..."
+gitleaks git --pre-commit --staged --redact
+
 echo "[pre-commit] check format..."
 
 echo "[pre-commit] check static analysis..."
