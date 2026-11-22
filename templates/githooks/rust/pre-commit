@@ -4,29 +4,35 @@ set -euo pipefail
 
 cd "$(git rev-parse --show-toplevel)"
 
+# Whether any staged file (added, copied, modified or renamed) matches the
+# pathspecs. It only gates the steps below: each one runs its just recipe on
+# the whole project, since the tools read the working tree, not the index.
+has_staged() {
+    ! git diff --cached --quiet --diff-filter=ACMR -- "$@"
+}
+
 echo "[pre-commit] secrets: scan staged changes..."
 gitleaks git --pre-commit --staged --redact
 
-mapfile -d '' rust < <(git diff --cached --name-only -z --diff-filter=ACMR -- '*.rs' Cargo.toml Cargo.lock)
-mapfile -d '' manifests < <(git diff --cached --name-only -z --diff-filter=ACMR -- Cargo.toml '*/Cargo.toml' Cargo.lock)
+rust=false
+manifests=false
+has_staged '*.rs' Cargo.toml Cargo.lock && rust=true
+has_staged Cargo.toml '*/Cargo.toml' Cargo.lock && manifests=true
 
-if [[ ${#rust[@]} -eq 0 && ${#manifests[@]} -eq 0 ]]; then
+if ! $rust && ! $manifests; then
     echo "[pre-commit] no staged Rust files, skipping"
     exit 0
 fi
 
-if [[ ${#rust[@]} -gt 0 ]]; then
-    echo "[pre-commit] rust: check format..."
-    just format-check
-
-    echo "[pre-commit] rust: static analysis..."
+if $rust; then
+    echo "[pre-commit] rust: check format and static analysis..."
     just lint
 
     echo "[pre-commit] rust: run tests..."
     just test
 fi
 
-if [[ ${#manifests[@]} -gt 0 ]]; then
+if $manifests; then
     echo "[pre-commit] rust: vet dependencies..."
     just vet
 fi
