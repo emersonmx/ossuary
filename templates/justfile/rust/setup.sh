@@ -13,19 +13,19 @@ $(skf justfile/rust/run)
 
 $(skf justfile/rust/watch)
 
-$(skf justfile/rust/test)
-
 $(skf justfile/rust/format)
 
-$(skf justfile/rust/format_check)
+$(skf justfile/rust/check)
 
 $(skf justfile/rust/lint)
 
-$(skf justfile/rust/check)
+$(skf justfile/rust/format_check)
 
 $(skf justfile/rust/vet)
 
 $(skf justfile/rust/secrets)
+
+$(skf justfile/rust/test)
 
 $(skf justfile/rust/audit)
 
