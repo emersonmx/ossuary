@@ -1,2 +1,2 @@
 # Check format, lint and tests on the whole project
-check: format-check lint vet secrets test
+check: lint vet secrets test

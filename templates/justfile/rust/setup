@@ -12,6 +12,8 @@ setup:
         exit 1
     fi
 
+    # Cargo builds here go through kache (.env), so it is
+    # installed first and without the wrapper it does not have yet.
     if ! command -v kache &> /dev/null; then
         echo "kache not found, installing..."
         RUSTC_WRAPPER= cargo install --locked kache

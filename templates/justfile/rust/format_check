@@ -1,3 +1,3 @@
-# Fail if any file is not formatted (no changes made)
+# Fail if the Rust code is not formatted
 format-check:
     cargo fmt --all --check
